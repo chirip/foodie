@@ -58,3 +58,7 @@ Route::post('/shops', function (Request $request) {
 Route::post('/book/{book}', function (Book $book) {
     //
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

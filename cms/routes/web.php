@@ -18,47 +18,17 @@
 use App\Shop;
 use Illuminate\Http\Request;
 
-/**
-* 店舗検索のダッシュボード表示 
-*/
-Route::get('/', function () {
-    return view('shops'); //検索ページ
-});
+/*** 店舗検索のダッシュボード表示 */
+Route::get('/', 'ShopsController@search');
 
-/**
-* 新「shop」を追加 
-*/
-Route::post('/shops', function (Request $request) {
-//バリデーション
-    $validator = Validator::make($request->all(), [
-        'shop_name' => 'required|max:191',
-    ]);
+/*** お気に入りに新「shop」を追加 */
+Route::post('/shops','ShopsController@addShop');
 
-    //バリデーション:エラー 
-    if ($validator->fails()) {
-        return redirect('/')
-            ->withInput()
-            ->withErrors($validator);
-    }
-    //以下に登録処理を記述（Eloquentモデル）
-    // Eloquent モデル
-        $shops = new Shop;
-        $shops->shop_name = $request->shop_name;
-        $shops->formatted_address = "渋谷";
-        $shops->place_id = "test_id";
-        $shops->lat = '35';
-        $shops->lng = '38';
-        $shops->save();
-        return redirect('/');
-});
-
-/**
-* 本を削除 
-*/
+/*** 本を削除 */
 Route::post('/book/{book}', function (Book $book) {
-    //
 });
 
-Auth::routes();
 
+/*** ログイン機能 */
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

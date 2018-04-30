@@ -1,0 +1,1 @@
+[29-Apr-2018 19:35:22 UTC] PHP Fatal error:  Can't use function return value in write context in /home/ubuntu/workspace/cms/storage/framework/views/0503dbb40deaf6a658aed2ec1cff8862d3783e47.php on line 7

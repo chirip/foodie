@@ -12,7 +12,7 @@ class ShopsController extends Controller
 //-----------検索画面表示----------------------------------------
 
     public function search(){
-        return view('shops'); //検索ページ
+        return view('shops_search'); //検索ページ
     }
     
 //-----------検索結果をお気に入りに追加----------------------------------------
@@ -41,7 +41,23 @@ class ShopsController extends Controller
             return redirect('/');
     }
     
-    
-    
+//-----------お気に入りを表示----------------------------------------
+
+    public function favorites(){
+        $shops = Shop::all();
+        return view('favorites', [
+            'shops' => $shops
+        ]);
+    }
+//-----------お気に入り削除----------------------------------------
+
+    public function destroy(Shop $shop){
+        $shop->delete();
+        $shops = Shop::all();
+        return view('favorites', [
+            'shops' => $shops
+        ]);
+    }
+
 
 }

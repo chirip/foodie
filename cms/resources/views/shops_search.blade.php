@@ -134,7 +134,7 @@
 
           console.log(places);
           
-          // 表示中リストリセット
+          // 表示中リスト　リセット
           $("tr").remove();
           
           // 取得リスト一覧表示
@@ -142,16 +142,29 @@
             var name = places[i].name
             var address = places[i].formatted_address
             var place_id = places[i].id  
+            var lat = places[i].geometry.location.lat()
+            var lng = places[i].geometry.location.lng()
             var photo =places[i].photos[0].getUrl({maxWidth: 300})
             
             $('tbody').append(`
                 <tr>
                     <td>${name}</td>
                     <td>${address}</td>
+                    <td>${place_id}</td>
+                    <td>${lat}</td>
+                    <td>${lng}</td>
+                    
+                    
                     <td>
                         <form action="{{ url('shops') }}" method="POST">
                             {{ csrf_field() }}
                             <input type="hidden" name="shop_name" id="shop_name" value="${name}">
+                            <input type="hidden" name="formatted_address" id="address" value="${address}">
+                            <input type="hidden" name="place_id" id="place_id" value="${place_id}">
+                            <input type="hidden" name="lat" id="lat" value="${lat}">
+                            <input type="hidden" name="lng" id="lng" value="${lng}">
+
+
                             <button type="submit" class="btn btn-danger">
                                  <i class="glyphicon glyphicon-trash"></i> save
                             </button>
@@ -211,7 +224,7 @@
       
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places&callback=initAutocomplete"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPJtfkTJKQR_tyfo8tcfyWZQQr3UPeIK0&libraries=places&callback=initAutocomplete"
          async defer></script>
 
   </body>

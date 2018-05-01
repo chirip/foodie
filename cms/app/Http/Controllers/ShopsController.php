@@ -33,10 +33,11 @@ class ShopsController extends Controller
         // Eloquent モデル
             $shops = new Shop;
             $shops->shop_name = $request->shop_name;
-            $shops->formatted_address = "渋谷";
-            $shops->place_id = "test_id";
-            $shops->lat = '35';
-            $shops->lng = '38';
+            $shops->user_id = '0';
+            $shops->formatted_address = $request->formatted_address;
+            $shops->place_id = $request->place_id;
+            $shops->lat = $request->lat;
+            $shops->lng = $request->lng;
             $shops->save();
             return redirect('/');
     }

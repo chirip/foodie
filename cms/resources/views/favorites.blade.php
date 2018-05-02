@@ -1,8 +1,7 @@
-    <!-- resources/views/favorites.blade.php -->
+<!-- resources/views/favorites.blade.php -->
 
 @extends('layouts.app')
 @section('content')
-
      <!-- 現在 店舗 -->
      @if (count($shops) >0 )
          <div class="panel panel-default">
@@ -43,9 +42,20 @@
                          @endforeach
                     </tbody>
                 </table>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        {{$shops->links()}}
+                    </div>
+                </div>
                 
  
             </div>
          </div>
      @else
+         <div>
+             <p>お気に入り店舗が登録されていません。</p>
+             <a href="http://base5-5-debugbar-cloned-hashimotogs.c9users.io/">店舗を検索</a>
+         </div>
+     
      @endif
+ @endsection

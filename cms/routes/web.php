@@ -16,13 +16,17 @@
 // });
 
 use App\Shop;
+use Auth;
 use Illuminate\Http\Request;
 
-/*** 店舗検索のダッシュボード表示 */
+/*** 店舗検索　表示 */
 Route::get('/', 'ShopsController@search');
 
 /*** お気に入り表示 */
 Route::get('/favorites', 'ShopsController@favorites');
+
+/*** メインページ　表示 */
+Route::get('/mainpage', 'ShopsController@mainpage');
 
 /*** お気に入りに新「shop」を追加 */
 Route::post('/shops','ShopsController@addShop');
@@ -33,4 +37,6 @@ Route::post('/favorites/delete/{shop}','ShopsController@destroy');
 
 /*** ログイン機能 */
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ShopsController@index')->name('home');
+
+Route::get('/layouts/app', 'ShopsController@app');

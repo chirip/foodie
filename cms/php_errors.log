@@ -1,1 +1,6 @@
 [29-Apr-2018 19:35:22 UTC] PHP Fatal error:  Can't use function return value in write context in /home/ubuntu/workspace/cms/storage/framework/views/0503dbb40deaf6a658aed2ec1cff8862d3783e47.php on line 7
+[02-May-2018 02:28:46 UTC] PHP Warning:  The use statement with non-compound name 'Auth' has no effect in /home/ubuntu/workspace/cms/routes/web.php on line 19
+[02-May-2018 04:31:49 UTC] PHP Warning:  The use statement with non-compound name 'Auth' has no effect in /home/ubuntu/workspace/cms/routes/web.php on line 19
+[02-May-2018 05:03:09 UTC] PHP Warning:  The use statement with non-compound name 'Auth' has no effect in /home/ubuntu/workspace/cms/routes/web.php on line 19
+[02-May-2018 05:03:55 UTC] PHP Warning:  The use statement with non-compound name 'Auth' has no effect in /home/ubuntu/workspace/cms/routes/web.php on line 19
+[02-May-2018 05:37:29 UTC] PHP Warning:  The use statement with non-compound name 'Auth' has no effect in /home/ubuntu/workspace/cms/routes/web.php on line 19

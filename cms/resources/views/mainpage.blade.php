@@ -5,19 +5,19 @@
  <!-- バリデーションエラーの表示に使用 -->
  @include('common.errors') 
   <!-- バリデーションエラーの表示に使用 -->
- 
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Places Searchbox</title>
+    <link href="css/search.css" rel="stylesheet" type="text/css">
+
+  </head>
+  <body>
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
-    <div class="test">
-    
-    <table>
-            <tr>
-            </tr>
-    </table>
-    
-    </div>
-    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-
     <script>
       // This example adds a search box to a map, using the Google Place Autocomplete
       // feature. People can enter geographical searches. The search box will return a
@@ -37,7 +37,6 @@
         // Create the search box and link it to the UI element.
         var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);
-
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
         // Bias the SearchBox results towards current map's viewport.
@@ -50,59 +49,6 @@
         // more details for that place.
         searchBox.addListener('places_changed', function() {
           var places = searchBox.getPlaces();
-          
-          console.log(places[0].id);
-          console.log(places[0].name);
-          console.log(places[0].geometry.location.lat());
-          console.log(places[0].geometry.location.lng());
-          console.log(places[0].photos[0].getUrl({
-            maxHeight: 200
-          }));
-
-          console.log(places);
-          
-          // 表示中リスト　リセット
-          $("tr").remove();
-          
-          // 取得リスト一覧表示
-          for(let i of Object.keys(places)) {
-            var name      = places[i].name
-            var address   = places[i].formatted_address
-            var place_id  = places[i].id  
-            var lat       = places[i].geometry.location.lat()
-            var lng       = places[i].geometry.location.lng()
-            var photo     = places[i].photos[0].getUrl({maxWidth: 300})
-
-            $('tbody').append(`
-                <tr>
-                    <td>${name}</td>
-                    <td>${address}</td>
-                    <td>${place_id}</td>
-                    <td>${lat}</td>
-                    <td>${lng}</td>
-                    
-                    
-                    <td>
-                        <form action="{{ url('shops') }}" method="POST">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="shop_name" id="shop_name" value="${name}">
-                            <input type="hidden" name="formatted_address" id="address" value="${address}">
-                            <input type="hidden" name="place_id" id="place_id" value="${place_id}">
-                            <input type="hidden" name="lat" id="lat" value="${lat}">
-                            <input type="hidden" name="lng" id="lng" value="${lng}">
-
-
-                            <button type="submit" class="btn btn-plus">
-                                 <i class="glyphicon glyphicon-pencil"></i> save
-                            </button>
-                        </form>
-                    </td>
-                    
-                </tr>`);
-
-          }
-
-
 
           if (places.length == 0) {
             return;
@@ -146,16 +92,10 @@
           });
           map.fitBounds(bounds);
         });
-
       }
-
-      
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPJtfkTJKQR_tyfo8tcfyWZQQr3UPeIK0&libraries=places&callback=initAutocomplete"
          async defer></script>
-
- @endsection 
-
+  </body>
 </html>
-<!--なぜかマップ表示にこれが必要-->

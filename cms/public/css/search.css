@@ -54,3 +54,10 @@
       .test{
         background-color: aqua;
       }
+      
+      /*mainpageで使用*/
+      #map-canvas {
+        width: 100%;
+        height: 200px;
+        background-color: #e7e7e7;
+      }

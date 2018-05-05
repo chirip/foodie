@@ -38,42 +38,24 @@
     </div>
     <div id="map"></div>
     
+    @foreach ($shops as $shop)
+    <div>{!!$shop->lng!!} </div>
+    @endforeach
     <script>
-    
+
+
     // 複数マーカー準備
+    
+        var latlng = @json($latlngs);　//lat lng json化
+        console.log(latlng);　//確認
+          
+      
+        
         var map;
         var marker = [];
         var infoWindow = [];
-        var markerData = [ 
-          // マーカーを立てる場所名・緯度・経度
-          {
-            name: 'TAM 東京',
-            lat: 35.6954806,
-            lng: 139.76325010000005,
-            icon: 'tam.png' // TAM 東京のマーカーだけイメージを変更する
-          }, {
-            name: '小川町駅',
-            lat: 35.6951212,
-            lng: 139.76610649999998
-         }, {
-            name: '淡路町駅',
-            lat: 35.69496,
-            lng: 139.76746000000003
-         }, {
-            name: '御茶ノ水駅',
-            lat: 35.6993529,
-            lng: 139.76526949999993
-         }, {
-            name: '神保町駅',
-            lat: 35.695932,
-            lng: 139.75762699999996
-         }, {
-            name: '新御茶ノ水駅',
-            lat: 35.696932,
-            lng: 139.76543200000003
-         }
-        ];
-        
+        var markerData = latlng;　//マーカーリスト　tableから全lat lngを取得してjsonで受け渡し
+
         
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {

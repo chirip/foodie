@@ -28,9 +28,23 @@ class ShopsController extends Controller
 
     public function mainpage(){
         $shops = Shop::all();
+        $latlngs = Shop::get(['lat','lng']);
+        
+        // $latlngs = Shop::all()->pluck('lat','lng'); 
+        // if ( count($latlngs) == 0 ) { 
+        // $latlngs = array(); 
+        // } 
+
+
+
+ 
+
+
         return view('mainpage', [
-            'shops' => $shops
+            'shops' => $shops,
+            'latlngs'=>$latlngs
         ]);//メインページ
+        
     }
     
 //-----------検索結果をお気に入りに追加----------------------------------------
@@ -67,6 +81,7 @@ class ShopsController extends Controller
                 ->orderBy('created_at','desc')
                 ->paginate(10);//ページネーション数指定
 
+
         return view('favorites', [
             'shops' => $shops
         ]);
@@ -76,6 +91,8 @@ class ShopsController extends Controller
     public function destroy(Shop $shop){
         $shop->delete();
         $shops = Shop::all();
+
+
         return view('favorites', [
             'shops' => $shops
         ]);

@@ -34,9 +34,13 @@ Route::post('/shops','ShopsController@addShop');
 /*** 店舗を削除 */
 Route::post('/favorites/delete/{shop}','ShopsController@destroy');
 
+/*** ajax */
+Route::post('/mainpage/post','ShopsController@ajax');
+
 
 /*** ログイン機能 */
 Auth::routes();
 Route::get('/home', 'ShopsController@index')->name('home');
 
 Route::get('/layouts/app', 'ShopsController@app');
+

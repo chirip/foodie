@@ -35,17 +35,27 @@ class ShopsController extends Controller
         // $latlngs = array(); 
         // } 
 
-
-
- 
-
-
         return view('mainpage', [
             'shops' => $shops,
             'latlngs'=>$latlngs
         ]);//メインページ
         
     }
+    
+//-----------メインページajax----------------------------------------
+
+    public function ajax(Request $request){
+        
+        return response()->json(
+            [
+                'neLat' => $request->neLat,
+                'neLng' => $request->neLng,
+                'swLat' => $request->swLat,
+                'swLng' => $request->swLng
+            ]
+        );
+    }
+    
     
 //-----------検索結果をお気に入りに追加----------------------------------------
 
@@ -103,4 +113,8 @@ class ShopsController extends Controller
         return view('layouts/app');
     }
 
+
+
 }
+
+

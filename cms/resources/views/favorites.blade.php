@@ -19,7 +19,7 @@
                     <tbody>
                          @foreach ($shops as $shop)
                             <tr>
-                                <!-- 店舗タイトル -->
+                                <!-- 店舗名 -->
                                 <td class="table-text">
                                     <div>{{ $shop->id }}</div>
                                 </td>
@@ -27,7 +27,7 @@
                                     <div>{{ $shop->shop_name }}</div>
                                 </td>
                                 
-                                <!-- 本: 削除ボタン -->
+                                <!-- 削除ボタン -->
                                 <td>
                                     <form action="{{ url('favorites/delete/'.$shop->id) }}" method="POST">
                                        {{ csrf_field() }}
@@ -36,8 +36,6 @@
                                         </button>
                                     </form>
                                 </td>
-                    
-                                
                             </tr>
                          @endforeach
                     </tbody>

@@ -29,11 +29,6 @@ class ShopsController extends Controller
     public function mainpage(){
         $shops = Shop::all();
         $latlngs = Shop::get(['lat','lng']);
-        
-        // $latlngs = Shop::all()->pluck('lat','lng'); 
-        // if ( count($latlngs) == 0 ) { 
-        // $latlngs = array(); 
-        // } 
 
         return view('mainpage', [
             'shops' => $shops,
@@ -46,8 +41,30 @@ class ShopsController extends Controller
 
     public function ajax(Request $request){
         
+        $points = Shop::get(['lat','lng']);
+        $neLat = $request->neLat;
+        $neLng = $request->neLng;
+        $swLat = $request->swLat;
+        $swLng = $request->swLng;
+        
+        $result = array();
+        $result['points']  = array();
+
+        foreach ($points as &$point) {
+            if (
+                $point->lat < $neLat &&
+                $point->lat > $swLat &&
+                $point->lng < $neLng &&
+                $point->lng > $swLng){
+                    
+                $result->points[] = $point;
+            }
+        }
+        
+        
         return response()->json(
             [
+                // 'result' => $result
                 'neLat' => $request->neLat,
                 'neLng' => $request->neLng,
                 'swLat' => $request->swLat,

@@ -85,9 +85,10 @@
         //地図の表示領域が変更されたらイベントを発生させる
         google.maps.event.addListener(map, 'idle', function() {
           
+          MarkerClear();//表示中の旗を削除
+
           resultLatlngs.length= 0;//取得した地点情報のリセット
            
-          MarkerClear();//表示中の旗を削除
 
           
           //地図の表示範囲を取得
@@ -117,14 +118,15 @@
 
         
           //格納された地点情報から複数の旗を立てる
-          var marker = [];
-          for (var i = 0; i < 10; i++) {
+          for (var i = 0; i < resultLatlngs.length; i++) {
             marker[i] = new google.maps.Marker({
               position: resultLatlngs[i],
               map: map
             });
           }
         });
+        
+        //ここまでidle
         
         //geocoder準備
         var geocoder = new google.maps.Geocoder();
@@ -162,21 +164,42 @@
         });
       }
       
-      console.log(resultLatlngs.length)
+      
+      
+//------------------ここまで geocode検索------------------------------------------------------------
+
+      
       //マーカー削除
-      function MarkerClear() {
-      //表示中のマーカーがあれば削除
+    function MarkerClear(){
+      var i;
+        //表示中のマーカーがあれば削除
         if(resultLatlngs.length > 0){
-        //マーカー削除
-          for (var i = 0; i < resultLatlngs.length; i++) {
-            marker[i].setMap();
-          }
-        //配列削除
-          for (i = 0; i < resultLatlngs.length; i++) {
-            marker[i].shift();
-          }
+            //マーカー削除
+            for (i = 0 ; i < marker.length; i++) {
+                marker[i].setMap();
+            }
+            //配列削除
+            for (i = 0; i <=  marker.length; i++) {
+                marker.shift();
+            }
+        }else{
+          console.log("ma-ka-naiyo");
         }
-      }
+    }
+      // //マーカー削除
+      // function MarkerClear() {
+      // //表示中のマーカーがあれば削除
+      //   if(resultLatlngs.length > 0){
+      //   //マーカー削除
+      //     for (var i = 0; i < resultLatlngs.length; i++) {
+      //       marker[i].setMap();
+      //     }
+      //   //配列削除
+      //     for (i = 0; i < resultLatlngs.length; i++) {
+      //       marker[i].shift();
+      //     }
+      //   }
+      // }
 
   
     </script>

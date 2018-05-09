@@ -1,39 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Geocoding service</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--  <head>-->
+<!--    <title>Geocoding service</title>-->
+<!--    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">-->
+<!--    <meta charset="utf-8">-->
     <!--ajax　POST準備-->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+<!--    <meta name="csrf-token" content="{{ csrf_token() }}">-->
 
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
-    </style>
-  </head>
+<!--  </head>-->
+
+ <!-- resources/views/shops.blade.php -->
+
+ @extends('layouts.app') 
+ @section('content') 
+ <!-- バリデーションエラーの表示に使用 -->
+ @include('common.errors') 
+  <!-- バリデーションエラーの表示に使用 -->
+
   <body>
     <div id="floating-panel">
       <input id="address" type="textbox" value="東京駅">
@@ -50,12 +33,7 @@
       </ul>
     </div>
     
-    <!--ajaxでのエラー回避にためjqueryの src httpsは削除-->
-    <script
-      src="//code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous">
-    </script>
+
       
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPJtfkTJKQR_tyfo8tcfyWZQQr3UPeIK0&callback=initMap"></script>
 
@@ -203,7 +181,8 @@
 
   
     </script>
-  </body>
+  @endsection 
+<!--なぜかマップ表示にこれが必要-->
 </html>
 
 <!--　参照　https://www.tam-tam.co.jp/tipsnote/javascript/post7755.html　-->

@@ -153,10 +153,10 @@
           if (status === 'OK') {
             resultsMap.setCenter(results[0].geometry.location);
             // 地名検索結果にマーカーを表示
-            var center_marker = new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location
-            });
+            // var center_marker = new google.maps.Marker({
+            //   map: resultsMap,
+            //   position: results[0].geometry.location
+            // });
           
           }else {
               alert('Geocode was not successful for the following reason: ' + status);

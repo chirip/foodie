@@ -27,10 +27,11 @@
     </div>
     <div id="map"></div>
     
-    <div id="pointlist">
-      <ul>
-          <li>{{public_path()}}　</li>
-      </ul>
+    <div id="shoplist">
+      <table>
+              <tr>
+              </tr>
+      </table>
     </div>
     
 
@@ -39,7 +40,7 @@
 
     <script>
 
-//------------- 変数---------------------------------------------------------------
+//------------- json受け取り　加工---------------------------------------------------------------
 
         // 複数マーカー準備
         var latlngs = @json($latlngs);　//自分がお気に入り登録済みlat lng json化
@@ -51,12 +52,16 @@
         var othersLatlngs = @json($othersLatlngs);　//他人の登録したlat lng json化
         for (var i = 0; i < othersLatlngs.length; i++) {
           //markerの色を指定：pinkに変更
-          latlngs[i].icon = '../image/pink-dot.png';
+          othersLatlngs[i].icon = '../image/pink-dot.png';
           }
+        
+        //json結合　戻り値はlatlngsに集約
+        var json3 = Object.assign(latlngs, othersLatlngs);
         console.log("json集約");　//確認
         console.log(latlngs);　//確認
 
-        
+//------------- 変数---------------------------------------------------------------
+
         var map;
         var marker = [];
         // var markerData = latlngs;　//マーカーリスト　tableから全lat lngを取得してjsonで受け渡し
@@ -73,10 +78,12 @@
           zoom: 16,
         });
         
-        //地図の表示領域が変更されたらイベントを発生させる
+        //-------------地図の表示領域が変更されたらイベントを発生させる
         google.maps.event.addListener(map, 'idle', function() {
           
           MarkerClear();//表示中の旗を削除
+          $("tr").remove();
+
 
           resultLatlngs.length= 0;//取得した地点情報のリセット
            
@@ -115,7 +122,24 @@
               icon:resultLatlngs[i].icon
             });
           }
-        });
+          
+           // 取得リスト一覧表示
+
+          for(let i = 0; i < resultLatlngs.length; i++) {
+            console.log(resultLatlngs[i].shop_name)
+                      var name      = resultLatlngs[i].shop_name
+                      var address   = resultLatlngs[i].formatted_address
+                      var place_id  = resultLatlngs[i].place_id
+          
+                      $('tbody').append(`
+                          <tr>resultLatlngs
+                              <td>${name}</td>
+                              <td>${address}</td>
+                              <td>${place_id}</td>
+          
+                          </tr>`);
+                    }
+          });
         
         //ここまでidle
         
@@ -158,6 +182,7 @@
       
       
 //------------------ここまで geocode検索------------------------------------------------------------
+//------------------ここからマーカー削除------------------------------------------------------------
 
       
       //マーカー削除
@@ -177,20 +202,8 @@
           console.log("no maker");
         }
     }
-      // //マーカー削除
-      // function MarkerClear() {
-      // //表示中のマーカーがあれば削除
-      //   if(resultLatlngs.length > 0){
-      //   //マーカー削除
-      //     for (var i = 0; i < resultLatlngs.length; i++) {
-      //       marker[i].setMap();
-      //     }
-      //   //配列削除
-      //     for (i = 0; i < resultLatlngs.length; i++) {
-      //       marker[i].shift();
-      //     }
-      //   }
-      // }
+//------------------ここまでマーカー削除------------------------------------------------------------
+
 
   
     </script>

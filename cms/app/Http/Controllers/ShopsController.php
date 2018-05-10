@@ -32,10 +32,13 @@ class ShopsController extends Controller
         $shops = Shop::all();
         $latlngs = Shop::where('user_id',$user_id)
                         ->orderBy('created_at','desc')
-                        ->get(['lat','lng']);
+                        ->get();
+                        // ->get(['lat','lng']);
                         
         $othersLatlngs = Shop::whereNotIn('user_id',[$user_id])
-                            ->get(['lat','lng']);
+                            ->get();
+
+                            // ->get(['lat','lng']);
 
         return view('mainpage', [
             'shops'         => $shops,

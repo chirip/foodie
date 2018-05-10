@@ -12,3 +12,4 @@
 [07-May-2018 15:49:03 UTC] PHP Warning:  The use statement with non-compound name 'Auth' has no effect in /home/ubuntu/workspace/cms/routes/web.php on line 19
 [07-May-2018 16:00:07 UTC] PHP Warning:  The use statement with non-compound name 'Auth' has no effect in /home/ubuntu/workspace/cms/routes/web.php on line 19
 [09-May-2018 17:36:10 UTC] PHP Warning:  The use statement with non-compound name 'Auth' has no effect in /home/ubuntu/workspace/cms/routes/web.php on line 19
+[10-May-2018 20:34:51 UTC] PHP Warning:  The use statement with non-compound name 'Auth' has no effect in /home/ubuntu/workspace/cms/routes/web.php on line 19

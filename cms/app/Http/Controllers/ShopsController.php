@@ -27,12 +27,21 @@ class ShopsController extends Controller
 //-----------メインページ表示----------------------------------------
 
     public function mainpage(){
+        $user_id = Auth::user()->id;
+
         $shops = Shop::all();
-        $latlngs = Shop::get(['lat','lng']);
+        $latlngs = Shop::where('user_id',$user_id)
+                        ->orderBy('created_at','desc')
+                        ->get(['lat','lng']);
+                        
+        $othersLatlngs = Shop::whereNotIn('user_id',[$user_id])
+                            ->get(['lat','lng']);
 
         return view('mainpage', [
-            'shops' => $shops,
-            'latlngs'=>$latlngs
+            'shops'         => $shops,
+            'latlngs'       =>$latlngs,
+            'othersLatlngs'  =>$othersLatlngs,
+            'user_id'       =>$user_id
         ]);//メインページ
         
     }

@@ -29,7 +29,7 @@
     
     <div id="pointlist">
       <ul>
-          <li>{{$latlngs}}</li>
+          <li>{{public_path()}}　</li>
       </ul>
     </div>
     
@@ -42,14 +42,27 @@
 //------------- 変数---------------------------------------------------------------
 
         // 複数マーカー準備
-        var latlngs = @json($latlngs);　//お気に入り登録済みlat lng json化
+        var latlngs = @json($latlngs);　//自分がお気に入り登録済みlat lng json化
+        for (var i = 0; i < latlngs.length; i++) {
+          //markerの色を指定：yellowに変更
+          latlngs[i].icon = '../image/yellow-dot.png';
+        }
+        
+        var othersLatlngs = @json($othersLatlngs);　//他人の登録したlat lng json化
+        for (var i = 0; i < othersLatlngs.length; i++) {
+          //markerの色を指定：pinkに変更
+          latlngs[i].icon = '../image/pink-dot.png';
+          }
+        console.log("json集約");　//確認
         console.log(latlngs);　//確認
-        // console.log(latlngs[0].lat);　//確認
+
         
         var map;
         var marker = [];
-        var markerData = latlngs;　//マーカーリスト　tableから全lat lngを取得してjsonで受け渡し
+        // var markerData = latlngs;　//マーカーリスト　tableから全lat lngを取得してjsonで受け渡し
         var resultLatlngs= [];
+        var othersResultLatlngs= [];
+
         
 //------------- ここから　init map---------------------------------------------------------------
 
@@ -67,12 +80,8 @@
 
           resultLatlngs.length= 0;//取得した地点情報のリセット
            
-
-          
           //地図の表示範囲を取得
           var bounds = map.getBounds();
-          // console.log(bounds);
-          
           var northEastLatLng = bounds.getNorthEast();//画面右上の座標
           var neLat = northEastLatLng.lat();
           var neLng = northEastLatLng.lng();
@@ -80,10 +89,11 @@
           var southWestLatLng = bounds.getSouthWest();//画面左下の座標
           var swLat = southWestLatLng.lat();
           var swLng = southWestLatLng.lng();
-          console.log(neLat,neLng,swLat,swLng);//変数取得確認
+          console.log("変数取得確認:"+neLat,neLng,swLat,swLng);//変数取得確認
           
       　　//データベース上の座標と表示範囲内の座標を比較して、表示範囲内に店舗情報がある場合は配列に格納
       　　//lat lngは左、下に行くと数値が下がる
+      　　//自分のお気に入り
           for (var i = 0, len = latlngs.length; i < len; i++) {
             if(latlngs[i].lat < neLat &&
                latlngs[i].lat > swLat &&
@@ -94,12 +104,15 @@
           }
           console.log(resultLatlngs)//格納された地点情報の確認
 
-        
+          
           //格納された地点情報から複数の旗を立てる
           for (var i = 0; i < resultLatlngs.length; i++) {
+            var mp = {lat:resultLatlngs[i].lat, lng:resultLatlngs[i].lng};
+
             marker[i] = new google.maps.Marker({
-              position: resultLatlngs[i],
-              map: map
+              position: mp,
+              map: map,
+              icon:resultLatlngs[i].icon
             });
           }
         });
@@ -161,7 +174,7 @@
                 marker.shift();
             }
         }else{
-          console.log("ma-ka-naiyo");
+          console.log("no maker");
         }
     }
       // //マーカー削除
@@ -188,3 +201,11 @@
 <!--　参照　https://www.tam-tam.co.jp/tipsnote/javascript/post7755.html　-->
 <!--　参照　http://mspec.jp/blog/archives/55　-->
 <!--　参照　https://developers.google.com/maps/documentation/javascript/examples/geocoding-simple?hl=ja　-->
+
+<!--
+//画像マーカーを作成
+// icon_image = new google.maps.MarkerImage();
+// //laravel の　publicのimageフォルダにgreen-dot.png画像を入れた場合
+// icon_image.url = '../image/green-dot.png';
+// icon: icon_image
+-->

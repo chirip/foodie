@@ -37,7 +37,6 @@ class ShopsController extends Controller
                         
         $othersLatlngs = Shop::whereNotIn('user_id',[$user_id])
                             ->get();
-
                             // ->get(['lat','lng']);
 
         return view('mainpage', [

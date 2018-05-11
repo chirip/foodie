@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Shop;
 use Auth; //ログイン認証
 use Validator;
+use DB;
+
 
 class ShopsController extends Controller
 {
@@ -29,21 +31,43 @@ class ShopsController extends Controller
     public function mainpage(){
         $user_id = Auth::user()->id;
 
-        $shops = Shop::all();
-        $latlngs = Shop::where('user_id',$user_id)
+        $shops      = Shop::all();
+        $latlngs    = Shop::where('user_id',$user_id)
                         ->orderBy('created_at','desc')
                         ->get();
-                        // ->get(['lat','lng']);
+                            // ->get(['lat','lng']);
                         
         $othersLatlngs = Shop::whereNotIn('user_id',[$user_id])
+                            ->orderBy('created_at','desc')
                             ->get();
                             // ->get(['lat','lng']);
+        
+        $sameShops = DB::select( DB::raw(
+                        "SELECT * 
+                        FROM shops
+                        WHERE user_id
+                        IN (
+                        
+                        SELECT user_id
+                        FROM shops
+                        WHERE shop_name
+                        IN (
+                        
+                        SELECT shop_name
+                        FROM shops
+                        WHERE user_id ='$user_id'
+                        )
+                        AND user_id !='$user_id'
+                        )") );
+
+
 
         return view('mainpage', [
             'shops'         => $shops,
             'latlngs'       =>$latlngs,
             'othersLatlngs'  =>$othersLatlngs,
-            'user_id'       =>$user_id
+            'user_id'       =>$user_id,
+            'sameShops' => $sameShops
         ]);//メインページ
         
     }

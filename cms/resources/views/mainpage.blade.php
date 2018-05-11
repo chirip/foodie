@@ -29,8 +29,9 @@
     
     <div id="shoplist">
       <table>
-        @foreach($latlngs as $latlng)
-              <tr>{{$latlng->shop_name}}
+        @foreach($sameShops as $sameShop)
+              <tr>
+                  <div>{{$sameShop->shop_name}}</div>
               </tr>
         @endforeach
 

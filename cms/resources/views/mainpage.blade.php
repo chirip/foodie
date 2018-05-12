@@ -29,9 +29,9 @@
     
     <div id="shoplist">
       <table>
-        @foreach($sameShops as $sameShop)
+        @foreach($commonFavoritesId as $commonFavorite)
               <tr>
-                  <div>{{$sameShop->shop_name}}</div>
+                  <div>{{$commonFavorite->user_id}}</div>
               </tr>
         @endforeach
 
@@ -48,36 +48,47 @@
 //------------- json受け取り　加工---------------------------------------------------------------
 
         // 複数マーカー準備
-        var latlngs = @json($latlngs);　//自分がお気に入り登録済みlat lng json化
-        for (var i = 0; i < latlngs.length; i++) {
-          //markerの色を指定：yellowに変更
-          latlngs[i].icon = '../image/yellow-dot.png';
-        }
-        console.log(latlngs);　//確認
-
+        /**
+         * favorites:red
+         * othersFavorites:yellow
+         * commonFavorites:pink
+        */
         
-        var othersLatlngs = @json($othersLatlngs);　//他人の登録したlat lng json化
-        for (var i = 0; i < othersLatlngs.length; i++) {
-          //markerの色を指定：pinkに変更
-          othersLatlngs[i].icon = '../image/pink-dot.png';
+        var favorites = @json($favorites);　//自分がお気に入り登録済み json化
+        var othersFavorites = @json($othersFavorites);　//他人の登録したお店 json化
+        var commonFavorites = @json($commonFavorites);　//他人の登録したlat lng json化
+
+
+        for (var i = 0; i < othersFavorites.length; i++) {
+          //markerの色を指定：yellow
+          othersFavorites[i].icon = '../image/yellow-dot.png';
           }
-         console.log(othersLatlngs);　//確認
+        console.log(othersFavorites);　//確認
+         
+         
+        for (var i = 0; i < commonFavorites.length; i++) {
+          //markerの色を指定：pink
+          commonFavorites[i].icon = '../image/pink-dot.png';
+          }
+        console.log(commonFavorites);　//確認
+        
+        for (var i = 0; i < favorites.length; i++) {
+          //markerの色を指定：red
+          favorites[i].icon = '../image/red-dot.png';
+        }
+        console.log(favorites);　//確認
 
         
-        //json結合　戻り値はlatlngsに集約
-        var totalLatlngs = latlngs.concat(othersLatlngs);
-        console.log(totalLatlngs);　//確認
-
-
-
+        //json結合　戻り値はFavoritesに集約
+        var totalFavorites = othersFavorites.concat(commonFavorites).concat(favorites);
+        console.log(totalFavorites);　//確認
 
 //------------- 変数---------------------------------------------------------------
 
         var map;
         var marker = [];
-        // var markerData = latlngs;　//マーカーリスト　tableから全lat lngを取得してjsonで受け渡し
-        var resultLatlngs= [];
-        var othersResultLatlngs= [];
+        var resultFavorites= [];
+        var othersResultFavorites= [];
 
         
 //------------- ここから　init map---------------------------------------------------------------
@@ -96,7 +107,7 @@
           $("tr").remove();
 
 
-          resultLatlngs.length= 0;//取得した地点情報のリセット
+          resultFavorites.length= 0;//取得した地点情報のリセット
            
           //地図の表示範囲を取得
           var bounds = map.getBounds();
@@ -112,38 +123,38 @@
       　　//データベース上の座標と表示範囲内の座標を比較して、表示範囲内に店舗情報がある場合は配列に格納
       　　//lat lngは左、下に行くと数値が下がる
       　　//自分のお気に入り
-          for (var i = 0, len = totalLatlngs.length; i < len; i++) {
-            if(totalLatlngs[i].lat < neLat &&
-               totalLatlngs[i].lat > swLat &&
-               totalLatlngs[i].lng < neLng &&
-               totalLatlngs[i].lng > swLng 
-            ){ resultLatlngs.push(totalLatlngs[i]); 
+          for (var i = 0, len = totalFavorites.length; i < len; i++) {
+            if(totalFavorites[i].lat < neLat &&
+               totalFavorites[i].lat > swLat &&
+               totalFavorites[i].lng < neLng &&
+               totalFavorites[i].lng > swLng 
+            ){ resultFavorites.push(totalFavorites[i]); 
             }
           }
-          console.log(resultLatlngs)//格納された地点情報の確認
+          console.log(resultFavorites)//格納された地点情報の確認
 
           
           //格納された地点情報から複数の旗を立てる
-          for (var i = 0; i < resultLatlngs.length; i++) {
-            var mp = {lat:resultLatlngs[i].lat, lng:resultLatlngs[i].lng};
+          for (var i = 0; i < resultFavorites.length; i++) {
+            var mp = {lat:resultFavorites[i].lat, lng:resultFavorites[i].lng};
 
             marker[i] = new google.maps.Marker({
               position: mp,
               map: map,
-              icon:resultLatlngs[i].icon
+              icon:resultFavorites[i].icon
             });
           }
           
            // 取得リスト一覧表示
 
-          for(let i = 0; i < resultLatlngs.length; i++) {
-            console.log(resultLatlngs[i].shop_name)
-                      var name      = resultLatlngs[i].shop_name
-                      var address   = resultLatlngs[i].formatted_address
-                      var place_id  = resultLatlngs[i].place_id
+          for(let i = 0; i < resultFavorites.length; i++) {
+            console.log(resultFavorites[i].shop_name)
+                      var name      = resultFavorites[i].shop_name
+                      var address   = resultFavorites[i].formatted_address
+                      var place_id  = resultFavorites[i].place_id
           
                       $('tbody').append(`
-                          <tr>resultLatlngs
+                          <tr>resultFavorites
                               <td>${name}</td>
                               <td>${address}</td>
                               <td>${place_id}</td>
@@ -200,7 +211,7 @@
     function MarkerClear(){
       var i;
         //表示中のマーカーがあれば削除
-        if(resultLatlngs.length > 0){
+        if(resultFavorites.length > 0){
             //マーカー削除
             for (i = 0 ; i < marker.length; i++) {
                 marker[i].setMap();

@@ -32,17 +32,36 @@ class ShopsController extends Controller
         $user_id = Auth::user()->id;
 
         $shops      = Shop::all();
-        $latlngs    = Shop::where('user_id',$user_id)
+        
+        //ログインユーザーの登録しているお店
+        $favorites    = Shop::where('user_id',$user_id)
                         ->orderBy('created_at','desc')
                         ->get();
-                            // ->get(['lat','lng']);
-                        
-        $othersLatlngs = Shop::whereNotIn('user_id',[$user_id])
-                            ->orderBy('created_at','desc')
-                            ->get();
-                            // ->get(['lat','lng']);
+
+        //ログインユーザーと共通する項目を有するユーザーIDの取得
+        $commonFavoritesId = DB::select( DB::raw(
+                        "SELECT user_id
+                        FROM shops
+                        WHERE shop_name
+                        IN (
+                    
+                        SELECT shop_name
+                        FROM shops
+                        WHERE user_id ='$user_id'
+                        )
+                        AND user_id !='$user_id'
+                        ") );
+     
+        //ログインユーザーと共通項をもつユーザーを配列に格納
+        $user_id_array = [];  
+        foreach ($commonFavoritesId as $commonF) {
+                array_push($user_id_array, $commonF->user_id);
+        }
+        array_push($user_id_array, $user_id);
         
-        $sameShops = DB::select( DB::raw(
+        
+        //ログインユーザーと共通する項目を有するユーザーのお店
+        $commonFavorites = DB::select( DB::raw(
                         "SELECT * 
                         FROM shops
                         WHERE user_id
@@ -58,21 +77,30 @@ class ShopsController extends Controller
                         WHERE user_id ='$user_id'
                         )
                         AND user_id !='$user_id'
-                        )") );
+                        )
+                        "));
+            
 
+        //ログインユーザー・共通項のあるユーザー以外のユーザーが登録しているお店
+        $othersFavorites = Shop::whereNotIn('user_id',$user_id_array)
+            ->orderBy('created_at','desc')
+            ->get();
 
-
-        return view('mainpage', [
-            'shops'         => $shops,
-            'latlngs'       =>$latlngs,
-            'othersLatlngs'  =>$othersLatlngs,
-            'user_id'       =>$user_id,
-            'sameShops' => $sameShops
-        ]);//メインページ
+        return view('mainpage', 
+            [
+                'shops'           => $shops,
+                'favorites'       =>$favorites,
+                'othersFavorites' =>$othersFavorites,
+                'user_id'         =>$user_id,
+                'commonFavorites' =>$commonFavorites,
+                'commonFavoritesId' => $commonFavoritesId,
+                'user_id_array'=>$user_id_array
+            ]);//メインページ
         
     }
     
 //-----------メインページajax----------------------------------------
+    //使ってない
 
     public function ajax(Request $request){
         
@@ -91,11 +119,9 @@ class ShopsController extends Controller
                 $point->lat > $swLat &&
                 $point->lng < $neLng &&
                 $point->lng > $swLng){
-                    
                 $result->points[] = $point;
             }
         }
-        
         
         return response()->json(
             [

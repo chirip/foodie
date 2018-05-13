@@ -6,7 +6,7 @@
  @include('common.errors') 
   <!-- バリデーションエラーの表示に使用 -->
  
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <input id="pac-input" class="controls" type="text" placeholder="エリア × ジャンル">
     <div id="map"></div>
 
     <div class="test">
@@ -17,7 +17,6 @@
     </table>
     
     </div>
-    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 
     <script>
       // This example adds a search box to a map, using the Google Place Autocomplete
@@ -158,5 +157,4 @@
 
  @endsection 
 
-</html>
 <!--なぜかマップ表示にこれが必要-->

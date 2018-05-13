@@ -1,13 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--  <head>-->
-<!--    <title>Geocoding service</title>-->
-<!--    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">-->
-<!--    <meta charset="utf-8">-->
-    <!--ajax　POST準備-->
-<!--    <meta name="csrf-token" content="{{ csrf_token() }}">-->
-
-<!--  </head>-->
 
  <!-- resources/views/shops.blade.php -->
 
@@ -21,21 +11,14 @@
     <div id="floating-panel">
       <input id="address" type="textbox" value="東京駅">
       <button id="submit" type="submit" value="Geocode">submit</button>
-      <button id="delete" type="submit" value="delete">delete</button>
-
 
     </div>
     <div id="map"></div>
     
     <div id="shoplist">
       <table>
-        @foreach($commonFavoritesId as $commonFavorite)
               <tr>
-                  <div>{{$commonFavorite->user_id}}</div>
               </tr>
-        @endforeach
-
-              
       </table>
     </div>
     
@@ -172,11 +155,6 @@
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
         });
-        
-        //maker削除　発火
-        document.getElementById('delete').addEventListener('click', function() {
-          MarkerClear();
-        });
 
       }
 //------------------ここまで　initMap------------------------------------------------------------
@@ -231,7 +209,6 @@
     </script>
   @endsection 
 <!--なぜかマップ表示にこれが必要-->
-</html>
 
 <!--　参照　https://www.tam-tam.co.jp/tipsnote/javascript/post7755.html　-->
 <!--　参照　http://mspec.jp/blog/archives/55　-->

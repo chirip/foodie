@@ -181,9 +181,7 @@ class ShopsController extends Controller
         $shops = Shop::all();
 
 
-        return view('favorites', [
-            'shops' => $shops
-        ]);
+        return redirect('favorites');
     }
 
     public function app(){

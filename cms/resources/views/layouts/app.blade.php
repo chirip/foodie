@@ -56,9 +56,18 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+              <ul class="nav navbar-nav">
+                <li class="{{ (Request::is('/') ? 'active' : '') }}">
+                    <a href="{{ url('') }}"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li class="{{ (Request::is('favorites') ? 'active' : '') }}">
+                    <a href="{{ url('favorites') }}">Favorites</a>
+                </li>
+                <li class="{{ (Request::is('mainpage') ? 'active' : '') }}">
+                    <a href="{{ url('mainpage') }}">Mainpage</a>
+                </li>
+
+            </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">

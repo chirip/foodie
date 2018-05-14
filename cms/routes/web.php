@@ -31,6 +31,10 @@ Route::get('/mainpage', 'ShopsController@mainpage');
 /*** お気に入りに新「shop」を追加 */
 Route::post('/shops','ShopsController@addShop');
 
+/*** 店舗詳細 */
+Route::get('/detail/{place_id}','ShopsController@detail');
+
+
 /*** 店舗を削除 */
 Route::post('/favorites/delete/{shop}','ShopsController@destroy');
 

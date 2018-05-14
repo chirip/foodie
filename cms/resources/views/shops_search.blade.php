@@ -6,16 +6,27 @@
  @include('common.errors') 
   <!-- バリデーションエラーの表示に使用 -->
  
-    <input id="pac-input" class="controls" type="text" placeholder="エリア × ジャンル">
+    <input id="pac-input" class="controls" type="text" placeholder="エリア× ジャンル">
     <div id="map"></div>
 
     <div class="test">
     
-    <table>
-            <tr>
-            </tr>
-    </table>
-    
+    <div class="panel panel-default">
+      <div class="panel-heading"> 
+        店舗一覧
+      </div>
+        <div class="panel-body">
+          <table class="table table-striped task-table">
+            <!-- テーブルヘッダ -->
+            <!--<thead>-->
+            <!--  <th>店舗一覧</th>-->
+            <!--  <th>&nbsp;</th>-->
+            <!--</thead>  -->
+            
+            <tr></tr>
+            
+          </table>
+      </div>
     </div>
 
     <script>
@@ -90,7 +101,14 @@
                             <input type="hidden" name="place_id" id="place_id" value="${place_id}">
                             <input type="hidden" name="lat" id="lat" value="${lat}">
                             <input type="hidden" name="lng" id="lng" value="${lng}">
-
+                            <td>
+                                <form action="{{ url('detail/'."${place_id}") }}" method="get">
+                                   {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="glyphicon glyphicon-pencil"></i> 詳細
+                                    </button>
+                                </form>
+                            </td>
 
                             <button type="submit" class="btn btn-plus">
                                  <i class="glyphicon glyphicon-pencil"></i> save

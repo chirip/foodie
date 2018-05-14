@@ -14,14 +14,25 @@
 
     </div>
     <div id="map"></div>
-    
-    <div id="shoplist">
-      <table>
-              <tr>
-              </tr>
+
+<div class="panel panel-default">
+  <div class="panel-heading"> 
+    店舗一覧
+  </div>
+    <div class="panel-body">
+      <table class="table table-striped task-table">
+        <!-- テーブルヘッダ -->
+        <!--<thead>-->
+        <!--  <th>店舗一覧</th>-->
+        <!--  <th>&nbsp;</th>-->
+        <!--</thead>  -->
+        
+        <tr></tr>
+        
       </table>
-    </div>
-    
+  </div>
+</div>
+
 
       
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPJtfkTJKQR_tyfo8tcfyWZQQr3UPeIK0&callback=initMap"></script>
@@ -140,8 +151,14 @@
                           <tr>resultFavorites
                               <td>${name}</td>
                               <td>${address}</td>
-                              <td>${place_id}</td>
-          
+                              <td>
+                                  <form action="{{ url('detail/'.$shop->place_id) }}" method="get">
+                                     {{ csrf_field() }}
+                                      <button type="submit" class="btn btn-primary">
+                                          <i class="glyphicon glyphicon-pencil"></i> 詳細
+                                      </button>
+                                  </form>
+                              </td>                              
                           </tr>`);
                     }
           });

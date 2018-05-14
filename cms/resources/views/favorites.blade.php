@@ -21,18 +21,27 @@
                             <tr>
                                 <!-- 店舗名 -->
                                 <td class="table-text">
-                                    <div>{{ $shop->id }}</div>
-                                </td>
-                                <td class="table-text">
                                     <div>{{ $shop->shop_name }}</div>
                                 </td>
-                                
+                                <td class="table-text">
+                                    <div>{{ $shop->formatted_address }}</div>
+                                </td>
                                 <!-- 削除ボタン -->
                                 <td>
                                     <form action="{{ url('favorites/delete/'.$shop->id) }}" method="POST">
                                        {{ csrf_field() }}
                                         <button type="submit" class="btn btn-danger">
                                             <i class="glyphicon glyphicon-trash"></i> 削除
+                                        </button>
+                                    </form>
+                                </td>
+                            
+                                <!-- 詳細ボタン -->
+                                <td>
+                                    <form action="{{ url('detail/'.$shop->place_id) }}" method="get">
+                                       {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="glyphicon glyphicon-pencil"></i> 詳細
                                         </button>
                                     </form>
                                 </td>
@@ -52,7 +61,7 @@
      @else
          <div>
              <p>お気に入り店舗が登録されていません。</p>
-             <a href="http://base5-5-debugbar-cloned-hashimotogs.c9users.io/">店舗を検索</a>
+             <a href="{{'/'}}">店舗を検索</a>
          </div>
      
      @endif

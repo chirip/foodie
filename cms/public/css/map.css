@@ -62,6 +62,20 @@
         background-color: #e7e7e7;
       }
       
+      /*box shadow使用*/
+      .box	{
+        /*box-shadow*/
+        box-shadow: 5px 5px 10px #000;
+        -webkit-box-shadow: 5px 5px 10px #000;
+        -moz-box-shadow: 5px 5px 10px #000;
+        /*ボックスのデザイン*/
+        padding:10px;
+        border:1px solid #ccc;
+        text-align:center
+      }
+
+
+
 
       
       

@@ -174,6 +174,17 @@ class ShopsController extends Controller
             'shops' => $shops
         ]);
     }
+    
+//-----------detailを表示----------------------------------------
+
+    public function detail(Request $request, $place_id){
+        $shop = Shop::where('place_id',$place_id)
+                ->first();
+                
+        return view('detail', [
+            'shop' => $shop
+        ]);
+    }    
 //-----------お気に入り削除----------------------------------------
 
     public function destroy(Shop $shop){
@@ -183,6 +194,8 @@ class ShopsController extends Controller
 
         return redirect('favorites');
     }
+
+//---------------------------------------------------
 
     public function app(){
 

@@ -151,14 +151,16 @@
                           <tr>resultFavorites
                               <td>${name}</td>
                               <td>${address}</td>
-                              <td>
-                                  <form action="{{ url('detail/'.$shop->place_id) }}" method="get">
-                                     {{ csrf_field() }}
-                                      <button type="submit" class="btn btn-primary">
-                                          <i class="glyphicon glyphicon-pencil"></i> 詳細
-                                      </button>
-                                  </form>
-                              </td>                              
+                              
+                             {{--
+                              // <td>
+                              //   <a href="{{ url('detail/'.${place_id}) }}">
+                              //     <button type="submit" class="btn btn-primary">
+                              //         <i class="glyphicon glyphicon-pencil"></i> 詳細
+                              //     </button>
+                              //   </a>
+                              // </td> 
+                              --}}
                           </tr>`);
                     }
           });

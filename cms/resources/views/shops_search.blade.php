@@ -88,11 +88,7 @@
                 <tr>
                     <td>${name}</td>
                     <td>${address}</td>
-                    <td>${place_id}</td>
-                    <td>${lat}</td>
-                    <td>${lng}</td>
-                    
-                    
+  
                     <td>
                         <form action="{{ url('shops') }}" method="POST">
                             {{ csrf_field() }}
@@ -101,20 +97,24 @@
                             <input type="hidden" name="place_id" id="place_id" value="${place_id}">
                             <input type="hidden" name="lat" id="lat" value="${lat}">
                             <input type="hidden" name="lng" id="lng" value="${lng}">
-                            <td>
-                                <form action="{{ url('detail/'."${place_id}") }}" method="get">
-                                   {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="glyphicon glyphicon-pencil"></i> 詳細
-                                    </button>
-                                </form>
-                            </td>
+                            // <input type="hidden" name="photo" id="photo" value="${photo}">
+
+                            
 
                             <button type="submit" class="btn btn-plus">
                                  <i class="glyphicon glyphicon-pencil"></i> save
                             </button>
                         </form>
-                    </td>
+                    {{--//   <td>
+                    //         <form action="{{ url('detail/'.${place_id}) }}" method="get">
+                    //           {{ csrf_field() }}
+                    //             <button type="submit" class="btn btn-primary">
+                    //                 <i class="glyphicon glyphicon-pencil"></i> 詳細
+                    //             </button>
+                    //         </form>
+                    //     </td>
+                    // </td>
+                    --}}
                     
                 </tr>`);
 

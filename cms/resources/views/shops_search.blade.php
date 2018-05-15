@@ -97,7 +97,7 @@
                             <input type="hidden" name="place_id" id="place_id" value="${place_id}">
                             <input type="hidden" name="lat" id="lat" value="${lat}">
                             <input type="hidden" name="lng" id="lng" value="${lng}">
-                            // <input type="hidden" name="photo" id="photo" value="${photo}">
+                            {{--// <input type="hidden" name="photo" id="photo" value="${photo}">--}}
 
                             
 

@@ -20,7 +20,11 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     
      <!--api sampleに記載あり-->
-    <link href="css/map.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="{{ asset('/css/map.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/detail.css') }}">
+
+
 
 
 </head>

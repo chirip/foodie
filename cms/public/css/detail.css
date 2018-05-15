@@ -1,0 +1,62 @@
+      /*detailで使用*/
+
+      #detail_wrap{
+        border:1px solid #999999;
+        box-shadow:0px 4px 8px -2px #d4d4d4;
+      }
+      
+      .photo{
+        height: 200px;
+        background-color: #cccccc;
+        border:1px solid #999999;
+      }
+      
+      .under{
+        border-bottom: 1px solid #707070;
+      }
+      
+    #shop_name{
+      margin-bottom: 20px;
+    }
+    
+    hr{
+        border-width: 2px 0 0 0; /* 太さ */
+        border-color: 707070; /* 色 */
+        margin: 10px 0px 40px 0;
+    }
+    
+#detail_table{
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+table th,table td{
+	border-top: 1px solid #707070;
+	border-left: 1px solid #707070;
+}
+table th{
+	padding: 5px 10px;
+	background: #F7D7D5;
+	color: #707070;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: normal;
+}
+table td{
+	padding: 2px 5px;
+	background: #FCFCFC;
+	color: #45823E;
+	text-align: left;
+}
+table tr:nth-child(even) td{
+	background: #EEEEEE;
+}
+table th:last-child,table td:last-child{
+	border-right: 1px solid #707070;
+}
+table tr:last-child th,table tr:last-child td{
+	border-bottom: 1px solid #707070;
+}
+table th:not(:first-child),table td:not(:first-child){
+	border-left:none;
+}
+

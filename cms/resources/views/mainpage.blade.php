@@ -9,7 +9,7 @@
 
   <body>
     <div id="floating-panel">
-      <input id="address" type="textbox" value="東京駅">
+      <input id="address" type="textbox" value="例）東京駅">
       <button id="submit" type="submit" value="Geocode">submit</button>
 
     </div>

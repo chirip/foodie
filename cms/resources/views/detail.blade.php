@@ -5,8 +5,8 @@
  <!-- バリデーションエラーの表示に使用 -->
  @include('common.errors') 
   <!-- バリデーションエラーの表示に使用 -->
-
-<div id="detail_wrap" class="container">
+<div id="detail_wrapper">
+<div id="detail_content" class="container">
     <div class="row">
         <div id="shop_name"  class="col-md-10 col-md-offset-1 under">
             <h2>{{$shop->shop_name}}</h2>
@@ -21,7 +21,7 @@
 
     <div class="row">
         <div   class="col-md-10 col-md-offset-1">
-            <h3>店舗詳細</h3>
+            <h5>店舗詳細</h5>
             <br>
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -42,8 +42,39 @@
 
         </div>
     </div>
+    <div class="row">
+        <div   class="col-md-10 col-md-offset-1">
+            <h5>Map</h5>
+            <div id="detail_map"></div>
+        </div>
+    </div>
+
 </div>
 
+<div id="map"></div>
+
+</div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPJtfkTJKQR_tyfo8tcfyWZQQr3UPeIK0&callback=initMap"></script>
+<script>
+        var shop = @json($shop);　//自分がお気に入り登録済み json化
+
+        var mylat = shop.lat;
+        var mylng = shop.lng;
+        console.log(mylat);
+      function initMap() {
+        var uluru = {lat:mylat, lng:mylng};
+        var map = new google.maps.Map(document.getElementById('detail_map'), {
+          zoom: 16,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+</script>
 
   
  @endsection 

@@ -14,6 +14,7 @@
 
     </div>
     <div id="map"></div>
+    <div id="legend"><h3></h3></div>
 
 <div class="panel panel-default">
   <div class="panel-heading"> 
@@ -173,6 +174,35 @@
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
         });
+        
+         //凡例準備
+          var icons = {
+            myFavorite: {
+              name: '私のお気に入り',
+              icon: '../image/red-dot.png'
+            },
+            othersFavorites: {
+              name: '誰かのお気に入り',
+              icon: '../image/pink-dot.png'
+            },
+            commonFavorites: {
+              name: '共通のお気に入りを持つ人',
+              icon: '../image/yellow-dot.png'
+            }
+          };
+        
+        var legend = document.getElementById('legend');
+        for (var key in icons) {
+          var type = icons[key];
+          var name = type.name;
+          var icon = type.icon;
+          var div = document.createElement('div');
+          div.innerHTML = '<img src="' + icon + '"> ' + name;
+          legend.appendChild(div);
+        }
+        //凡例反映
+        map.controls[google.maps.ControlPosition.LEFT_TOP].push(legend);
+      
 
       }
 //------------------ここまで　initMap------------------------------------------------------------
@@ -221,8 +251,7 @@
         }
     }
 //------------------ここまでマーカー削除------------------------------------------------------------
-
-
+         
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPJtfkTJKQR_tyfo8tcfyWZQQr3UPeIK0&callback=initMap"></script>
 

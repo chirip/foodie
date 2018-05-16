@@ -185,6 +185,8 @@ class ShopsController extends Controller
             'shop' => $shop
         ]);
     }    
+    
+    
 //-----------お気に入り削除----------------------------------------
 
     public function destroy(Shop $shop){

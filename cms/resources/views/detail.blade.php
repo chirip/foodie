@@ -28,15 +28,15 @@
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <tr>
-                    <th class="info">住所</th>
+                    <th class="Warning">住所</th>
                     <td>{{$shop->formatted_address}}</td>
                     </tr>
                     <tr>
-                    <th class="info">電話番号</th>
+                    <th class="Warning">電話番号</th>
                     <td>03-3333-3333</td>
                     </tr>
                     <tr>
-                    <th class="info">営業日</th>
+                    <th class="Warning">営業日</th>
                     <td>平日</td>
                   </tr>
                 </table>
@@ -67,7 +67,7 @@
       function initMap() {
         var uluru = {lat:mylat, lng:mylng};
         var map = new google.maps.Map(document.getElementById('detail_map'), {
-          zoom: 16,
+          zoom: 17,
           center: uluru
         });
         var marker = new google.maps.Marker({

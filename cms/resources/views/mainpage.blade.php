@@ -35,7 +35,6 @@
 
 
       
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPJtfkTJKQR_tyfo8tcfyWZQQr3UPeIK0&callback=initMap"></script>
 
     <script>
 
@@ -224,8 +223,9 @@
 //------------------ここまでマーカー削除------------------------------------------------------------
 
 
-  
     </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPJtfkTJKQR_tyfo8tcfyWZQQr3UPeIK0&callback=initMap"></script>
+
   @endsection 
 <!--なぜかマップ表示にこれが必要-->
 

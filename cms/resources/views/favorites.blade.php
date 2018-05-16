@@ -12,8 +12,7 @@
                 <table class="table table-striped task-table">
                     <!-- テーブルヘッダ -->
                     <thead>
-                        <th>店舗一覧</th>
-                        <th>&nbsp;</th>
+                        店舗一覧
                     </thead>
                     <!-- テーブル店舗体 -->
                     <tbody>
@@ -35,7 +34,13 @@
                                         </button>
                                     </form>
                                 </td>
-                            
+                                
+                                <!--<td>-->
+                                <!--<a href ="{{ url('detail/'.$shop->place_id) }}" >-->
+                                <!--<div>test</div>-->
+                                <!--</a>-->
+                                <!--</td>-->
+
                                 <!-- 詳細ボタン -->
                                 <td>
                                     <form action="{{ url('detail/'.$shop->place_id) }}" method="get">

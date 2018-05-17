@@ -92,6 +92,8 @@
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 35.6811673, lng: 139.76705160000006},//初期表示　東京駅
           zoom: 16,
+          disableDefaultUI: true
+
         });
         
         //-------------地図の表示領域が変更されたらイベントを発生させる

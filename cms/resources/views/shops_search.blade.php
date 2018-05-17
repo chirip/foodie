@@ -38,21 +38,13 @@
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-/* スタイル */
-        var stylesArray = [
-            {
-                stylers: [
-               			{ visibility: 'off' }
-                ]
-            }
-        ];
-
-
       function initAutocomplete() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 35.6811673, lng: 139.76705160000006},
           zoom: 16,
-          mapTypeId: 'roadmap'
+          mapTypeId: 'roadmap',
+          disableDefaultUI: true
+
         });
         // Create the search box and link it to the UI element.
         var input = document.getElementById('pac-input');

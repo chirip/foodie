@@ -29,52 +29,10 @@
     <link rel="stylesheet" href="{{ asset('/css/detail.css') }}">
     
 <style type="text/css">
-.btn,
-.btn-primary, 
-.btn-info, 
-.btn-success, 
-.btn-warning, 
-.btn-danger, 
-.btn-inverse, 
-.btn-link, 
-.navbar-inner, 
-.navbar .btn-navbar, 
-.navbar-inverse .navbar-inner, 
-.navbar-inverse .btn-navbar, 
-.progress, 
-.progress .bar, 
-.progress-striped .bar, 
-.progress-danger .bar,
-.progress .bar-danger, 
-.progress-danger.progress-striped .bar,
-.progress-striped .bar-danger, 
-.progress-success .bar,
-.progress .bar-success, 
-.progress-success.progress-striped .bar,
-.progress-striped .bar-success, 
-.progress-info .bar,
-.progress .bar-info, 
-.progress-info.progress-striped .bar,
-.progress-striped .bar-info, 
-.progress-warning .bar,
-.progress .bar-warning, 
-.progress-warning.progress-striped .bar,
-.progress-striped .bar-warning, 
-.dropdown-menu>li>a:hover,
-.dropdown-menu>li>a:focus,
-.dropdown-submenu:hover>a,
-.dropdown-submenu:focus>a, 
-.dropdown-menu>.active>a,
-.dropdown-menu>.active>a:hover,
-.dropdown-menu>.active>a:focus, 
-.dropdown-menu>.disabled>a:hover,
-.dropdown-menu>.disabled>a:focus {
-	filter: none;
-	background-image: none;
-}
-    .navbar-default {
+
+.navbar-default {
   background-color: #ffffff;
-  border-color: #fff;
+  background-image:none;
 }
 .navbar-default .navbar-brand {
   color: #474747;

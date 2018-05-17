@@ -14,6 +14,7 @@
     <div class="panel panel-default">
       <div class="panel-heading"> 
         店舗一覧
+      
       </div>
         <div class="panel-body">
           <table class="table table-striped task-table">

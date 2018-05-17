@@ -12,6 +12,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('/css/reset.css') }}">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -19,15 +20,152 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     
-     <!--api sampleに記載あり-->
+    <!--izimodal-->
+    <!--<link rel="stylesheet" href="{{ asset('/css/izModal.min.css') }}">-->
+    <link rel="stylesheet" href="{{ asset('/css/iziModal.css') }}">
 
+    <!--orignal-->
     <link rel="stylesheet" href="{{ asset('/css/map.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/detail.css') }}">
+    
+<style type="text/css">
+.btn,
+.btn-primary, 
+.btn-info, 
+.btn-success, 
+.btn-warning, 
+.btn-danger, 
+.btn-inverse, 
+.btn-link, 
+.navbar-inner, 
+.navbar .btn-navbar, 
+.navbar-inverse .navbar-inner, 
+.navbar-inverse .btn-navbar, 
+.progress, 
+.progress .bar, 
+.progress-striped .bar, 
+.progress-danger .bar,
+.progress .bar-danger, 
+.progress-danger.progress-striped .bar,
+.progress-striped .bar-danger, 
+.progress-success .bar,
+.progress .bar-success, 
+.progress-success.progress-striped .bar,
+.progress-striped .bar-success, 
+.progress-info .bar,
+.progress .bar-info, 
+.progress-info.progress-striped .bar,
+.progress-striped .bar-info, 
+.progress-warning .bar,
+.progress .bar-warning, 
+.progress-warning.progress-striped .bar,
+.progress-striped .bar-warning, 
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus,
+.dropdown-submenu:hover>a,
+.dropdown-submenu:focus>a, 
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:hover,
+.dropdown-menu>.active>a:focus, 
+.dropdown-menu>.disabled>a:hover,
+.dropdown-menu>.disabled>a:focus {
+	filter: none;
+	background-image: none;
+}
+    .navbar-default {
+  background-color: #ffffff;
+  border-color: #fff;
+}
+.navbar-default .navbar-brand {
+  color: #474747;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #961212;
+}
+.navbar-default .navbar-text {
+  color: #474747;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #474747;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #961212;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu {
+  background-color: #ffffff;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a {
+  color: #474747;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
+  color: #961212;
+  background-color: #fbecec;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li.divider {
+  background-color: #fbecec;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #961212;
+  background-color: #fbecec;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #961212;
+  background-color: #fbecec;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #961212;
+  background-color: #fbecec;
+}
+.navbar-default .navbar-toggle {
+  border-color: #fff;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #fbecec;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #474747;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #474747;
+}
+.navbar-default .navbar-link {
+  color: #474747;
+}
+.navbar-default .navbar-link:hover {
+  color: #961212;
+}
 
-
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #474747;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #961212;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #961212;
+    background-color: #fbecec;
+  }
+}
+</style>
 
 
 </head>
+
 <body>
     
     <div id="app">
@@ -95,17 +233,17 @@
             </div>
         </nav>
     </div>
-
-        @yield('content')
-
+    
     <!-- Scripts -->
-    <!--ajaxでのエラー回避にためjqueryの src httpsは削除-->
-    <script
-      src="//code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!--<script src="{{ asset('js/app.js') }}"></script>-->
+    <script src="{{ asset('js/iziModal.min.js') }}"></script>
+
+
+        @yield('content')
+
+
 </body>
 </html>

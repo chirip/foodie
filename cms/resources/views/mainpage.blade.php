@@ -19,6 +19,11 @@
 <div class="panel panel-default">
   <div class="panel-heading"> 
     店舗一覧
+    <button data-iziModal-open=".iziModal">クリックするとウィンドウが表示されます</button>
+    <div class="iziModal" data-izimodal-title="ヘッダー部分のタイトル (無くても動作します)" data-izimodal-subtitle="ヘッダータイトルの下部に表示される説明文(無くても動作します)">
+    <p>ここにコンテンツを記述していきます。</p>
+    <!-- / .iziModal --></div>
+    
   </div>
     <div class="panel-body">
       <table class="table table-striped task-table">
@@ -253,7 +258,12 @@
         }
     }
 //------------------ここまでマーカー削除------------------------------------------------------------
-         
+//------------------ iz modal ------------------------------------------------------------
+
+      $(function(){
+      	$(".iziModal").iziModal();
+      })
+
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPJtfkTJKQR_tyfo8tcfyWZQQr3UPeIK0&callback=initMap"></script>
 

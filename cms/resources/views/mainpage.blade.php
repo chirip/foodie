@@ -14,18 +14,16 @@
 
     </div>
     <div id="map"></div>
-    <div id="legend"><h3></h3></div>
-
-<div class="panel panel-default">
-  <div class="panel-heading"> 
-    店舗一覧
-    <button data-iziModal-open=".iziModal">クリックするとウィンドウが表示されます</button>
-    <div class="iziModal" data-izimodal-title="ヘッダー部分のタイトル (無くても動作します)" data-izimodal-subtitle="ヘッダータイトルの下部に表示される説明文(無くても動作します)">
-    <p>ここにコンテンツを記述していきます。</p>
-    <!-- / .iziModal --></div>
+    <div id="legend">
+        <!--<h3></h3>  凡例タイトル-->
+    </div>
     
+<!--<div class="panel panel-default">-->
+  
+  <div> 
+    店舗一覧
   </div>
-    <div class="panel-body">
+  
       <table class="table table-striped task-table">
         <!-- テーブルヘッダ -->
         <!--<thead>-->
@@ -34,10 +32,30 @@
         <!--</thead>  -->
         
         <tr></tr>
-        
       </table>
-  </div>
+
+<div class="container">
+    <div class="row card">
+        <a class ="none-decoration" href="#">
+            <div class="col-xs-7 col-md-9">
+                <div>shopname</div>
+                <hr>
+                <div>hyousai:zyuusyo address</div>
+            </div>
+            
+            <div class="col-xs-3 col-md-2 img_box">
+                <div class="testbox"></div>
+                <!--<img src="{{ asset('/image/test.jpg') }}" alt="test_phote">-->
+            </div>
+            
+            <div class="col-xs-2 col-md-1">
+                <img src="{{ asset('/image/pink.png') }}" alt="test_phote">
+            </div>
+        </a>
+    </div>
 </div>
+
+<!--</div>-->
 
 
       
@@ -185,16 +203,16 @@
          //凡例準備
           var icons = {
             myFavorite: {
-              name: '私のお気に入り',
-              icon: '../image/red-dot.png'
+              name: 'オキニ',
+              icon: '../image/red-dot-mini.png'
             },
             othersFavorites: {
-              name: '誰かのお気に入り',
-              icon: '../image/pink-dot.png'
+              name: 'ミンナ',
+              icon: '../image/pink-dot-mini.png'
             },
             commonFavorites: {
-              name: '共通のお気に入りを持つ人',
-              icon: '../image/yellow-dot.png'
+              name: 'コモン',
+              icon: '../image/yellow-dot-mini.png'
             }
           };
         
@@ -258,17 +276,11 @@
         }
     }
 //------------------ここまでマーカー削除------------------------------------------------------------
-//------------------ iz modal ------------------------------------------------------------
-
-      $(function(){
-      	$(".iziModal").iziModal();
-      })
-
+         
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPJtfkTJKQR_tyfo8tcfyWZQQr3UPeIK0&callback=initMap"></script>
 
   @endsection 
-<!--なぜかマップ表示にこれが必要-->
 
 <!--　参照　https://www.tam-tam.co.jp/tipsnote/javascript/post7755.html　-->
 <!--　参照　http://mspec.jp/blog/archives/55　-->

@@ -33,7 +33,7 @@
 <body>
     
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -64,6 +64,7 @@
                             <a href="{{ url('mainpage') }}">Mainpage</a>
                         </li>
                     </ul>
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">

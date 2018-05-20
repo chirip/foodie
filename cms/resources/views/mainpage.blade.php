@@ -8,11 +8,20 @@
   <!-- バリデーションエラーの表示に使用 -->
 
   <body>
-    <div id="floating-panel">
-      <input id="address" type="textbox" value="例）東京駅">
-      <button id="submit" type="submit" value="Geocode">submit</button>
+    <!--<div id="floating-panel">-->
+    <!--  <input id="address" type="textbox" value="例）東京駅">-->
+    <!--  <button id="submit" type="submit" value="Geocode">submit</button>-->
 
-    </div>
+    <!--</div>-->
+    
+    <dl class="search">
+        <dt><input id="address" type="text" name="search" value="" placeholder="Search" /></dt>
+        <dd><button id="submit"><span></span></button></dd>
+    </dl>
+
+
+    
+    
     <div id="map"></div>
     <div id="legend">
         <!--<h3></h3>  凡例タイトル-->

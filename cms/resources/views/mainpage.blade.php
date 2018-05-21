@@ -33,23 +33,23 @@
     店舗一覧
   </div>
   
-      <table class="table table-striped task-table">
+      <!--<table class="table table-striped task-table">-->
         <!-- テーブルヘッダ -->
         <!--<thead>-->
         <!--  <th>店舗一覧</th>-->
         <!--  <th>&nbsp;</th>-->
         <!--</thead>  -->
         
-        <tr></tr>
-      </table>
+      <!--  <tr></tr>-->
+      <!--</table>-->
 
-<div class="container">
+<div class="container card_result">
     <div class="row card">
         <a class ="none-decoration" href="#">
             <div class="col-xs-7 col-md-9">
-                <div>shopname</div>
-                <hr>
-                <div>hyousai:zyuusyo address</div>
+                <div class ="card_shop_name">shopname</div>
+                <hr class="card_hr">
+                <div class="card_shop_detail">hyousai:zyuusyo address</div>
             </div>
             
             <div class="col-xs-3 col-md-2 img_box">
@@ -181,21 +181,46 @@
                       var address   = resultFavorites[i].formatted_address
                       var place_id  = resultFavorites[i].place_id
           
-                      $('tbody').append(`
-                          <tr>resultFavorites
-                              <td>${name}</td>
-                              <td>${address}</td>
+                      $('.card_result').append(`
+                        <div class="row card">
+                                <a class ="none-decoration" href="#">
+                                    <div class="col-xs-7 col-md-9">
+                                        <div class ="card_shop_name">${name}</div>
+                                        <hr class="card_hr">
+                                        <div class="card_shop_detail">${address}</div>
+                                    </div>
+                                    
+                                    <div class="col-xs-3 col-md-2 img_box">
+                                        <div class="testbox"></div>
+                                        <!--<img src="{{ asset('/image/test.jpg') }}" alt="test_phote">-->
+                                    </div>
+                                    
+                                    <div class="col-xs-2 col-md-1">
+                                        <img src="{{ asset('/image/pink.png') }}" alt="test_phote">
+                                    </div>
+                                </a>
+                            </div>
+
+                      
+                    {{--
+                    //   <tr>resultFavorites
+                    //       <td>${name}</td>
+                    //       <td>${address}</td>
+                    //   </tr>
+                    --}}
                               
-                             {{--
-                              // <td>
-                              //   <a href="{{ url('detail/'.${place_id}) }}">
-                              //     <button type="submit" class="btn btn-primary">
-                              //         <i class="glyphicon glyphicon-pencil"></i> 詳細
-                              //     </button>
-                              //   </a>
-                              // </td> 
-                              --}}
-                          </tr>`);
+                              
+                     {{--
+                      // <td>
+                      //   <a href="{{ url('detail/'.${place_id}) }}">
+                      //     <button type="submit" class="btn btn-primary">
+                      //         <i class="glyphicon glyphicon-pencil"></i> 詳細
+                      //     </button>
+                      //   </a>
+                      // </td> 
+                      --}}
+                      
+                          `);
                     }
           });
         

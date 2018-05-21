@@ -131,6 +131,8 @@ bootstrap3 navbar
 .navbar-default .navbar-nav > .active > a:focus {
   color: #961212;
   background-color: #fbecec;
+  background-image:none;
+  box-shadow: none;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
@@ -196,9 +198,10 @@ card
 .card{
   border-color: #000;
   background-color: #fff;
--webkit-box-shadow: 0px 4px 18px -5px rgba(122,122,122,1);
--moz-box-shadow: 0px 4px 18px -5px rgba(122,122,122,1);
-box-shadow: 0px 4px 18px -5px rgba(122,122,122,1);  
+  margin-bottom: 15px;
+  -webkit-box-shadow: 0px 4px 18px -5px rgba(122,122,122,1);
+  -moz-box-shadow: 0px 4px 18px -5px rgba(122,122,122,1);
+  box-shadow: 0px 4px 18px -5px rgba(122,122,122,1);  
 }
 
 .none-decoration{
@@ -218,6 +221,21 @@ box-shadow: 0px 4px 18px -5px rgba(122,122,122,1);
   width: 100px;
   background-color: #343434;
   margin-left: auto;
+}
+
+.card_shop_name{
+  font-size: 20px;
+  margin-left: 20px;
+  padding: 20px 0px 5px 0px ;
+}
+
+.card_shop_detail{
+  margin-left: 20px;
+  padding: 5px 0px 20px 0px ;
+
+}
+.card_hr{
+  margin: 0px
 }
 
 /*--------------------------------------------------------
@@ -259,8 +277,8 @@ dl.search dd button{
 }
 dl.search dd button span{
     display:block;
-    width:25px;
-    height:25px;
+    width:23px;
+    height:23px;
     background:url('../image/icon_search_50.png') no-repeat scroll 0 0;
     background-size:contain
 }

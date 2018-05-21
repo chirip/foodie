@@ -14,14 +14,15 @@
 
     <!--</div>-->
     
-    <dl class="search">
-        <dt class ="search_box"><input id="address" type="text" name="search" value="" placeholder="　エリア検索　/　例)渋谷駅" /></dt>
-        <dd><button id="submit"><span></span></button></dd>
-    </dl>
-
-
     
-    
+    <!--検索ボックス -->
+    <div class="search_wrap">
+        <dl class="search">
+            <dt class ="search_box"><input id="address" type="text" name="search" value="" placeholder="　エリア検索　/　例)渋谷駅" /></dt>
+            <dd><button id="submit"><span></span></button></dd>
+        </dl>
+    </div>
+
     <div id="map"></div>
     <div id="legend">
         <!--<h3></h3>  凡例タイトル-->
@@ -124,7 +125,10 @@
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 35.6811673, lng: 139.76705160000006},//初期表示　東京駅
           zoom: 16,
-          disableDefaultUI: true
+          disableDefaultUI: true,
+          stylers: [
+			{ visibility: "off" }
+		]
 
         });
         

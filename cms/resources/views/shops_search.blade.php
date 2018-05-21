@@ -6,7 +6,14 @@
  @include('common.errors') 
   <!-- バリデーションエラーの表示に使用 -->
  
-    <input id="pac-input" class="controls" type="text" placeholder="エリア× ジャンル">
+     <div class="search_wrap">
+        <dl class="search">
+            <dt class ="search_box"><input id="pac-input"  type="text" class="controls" name="search" value="" placeholder="　店舗検索　/　例)渋谷駅　そば" /></dt>
+            <dd><button id="submit"><span></span></button></dd>
+        </dl>
+    </div>
+ 
+    <!--<input id="pac-input" class="controls" type="text" placeholder="エリア× ジャンル">-->
     <div id="map"></div>
 
     <div class="test">

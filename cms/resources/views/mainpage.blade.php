@@ -116,6 +116,8 @@
         var marker = [];
         var resultFavorites= [];
         var othersResultFavorites= [];
+        
+        
 
         
 //------------- ここから　init map---------------------------------------------------------------
@@ -126,11 +128,15 @@
           center: {lat: 35.6811673, lng: 139.76705160000006},//初期表示　東京駅
           zoom: 16,
           disableDefaultUI: true,
-          stylers: [
-			{ visibility: "off" }
-		]
-
         });
+        
+        //-------------POI削除
+         var styleOptions = [{
+            featureType: "poi",
+            elementType: "labels",
+            stylers: [{visibility: "off"}]
+         }];
+        map.setOptions({styles: styleOptions});
         
         //-------------地図の表示領域が変更されたらイベントを発生させる
         google.maps.event.addListener(map, 'idle', function() {

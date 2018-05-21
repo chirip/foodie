@@ -9,7 +9,7 @@
      <div class="search_wrap">
         <dl class="search">
             <dt class ="search_box"><input id="pac-input"  type="text" class="controls" name="search" value="" placeholder="　店舗検索　/　例)渋谷駅　そば" /></dt>
-            <dd><button id="submit"><span></span></button></dd>
+            <!--<dd><button id="submit"><span></span></button></dd>-->
         </dl>
     </div>
  
@@ -52,8 +52,16 @@
           zoom: 16,
           mapTypeId: 'roadmap',
           disableDefaultUI: true
-
         });
+        
+        //-------------POI削除
+         var styleOptions = [{
+            featureType: "poi",
+            elementType: "labels",
+            stylers: [{visibility: "off"}]
+         }];
+        map.setOptions({styles: styleOptions});
+        
         // Create the search box and link it to the UI element.
         var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);

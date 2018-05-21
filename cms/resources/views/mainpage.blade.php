@@ -15,7 +15,7 @@
     <!--</div>-->
     
     <dl class="search">
-        <dt><input id="address" type="text" name="search" value="" placeholder="Search" /></dt>
+        <dt class ="search_box"><input id="address" type="text" name="search" value="" placeholder="　エリア検索　/　例)渋谷駅" /></dt>
         <dd><button id="submit"><span></span></button></dd>
     </dl>
 

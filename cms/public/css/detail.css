@@ -232,11 +232,10 @@ dl.search{
     background-color:#fff;
     border-top: 3px solid #707070;
 
-
 }
 dl.search dt{
-    margin-right:40px;
-    padding:8px 0 8px 8px;
+    margin-right:70px;
+    padding:8px 0 8px 30px;
 
 }
 dl.search dt input{
@@ -256,6 +255,7 @@ dl.search dd button{
     padding:10px;
     background:none;
     border:none;
+    margin-right: 20px;
 }
 dl.search dd button span{
     display:block;
@@ -263,5 +263,5 @@ dl.search dd button span{
     height:25px;
     background:url('../image/icon_search_50.png') no-repeat scroll 0 0;
     background-size:contain
-    
 }
+

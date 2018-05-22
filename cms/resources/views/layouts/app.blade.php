@@ -86,7 +86,7 @@
                                     <li class="{{ (Request::is('favorites') ? 'active' : '') }}">
                                         <a href="{{ url('favorites') }}">Favorites</a>
                                     </li>
-                                    
+                                    <hr class="margin-0">
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

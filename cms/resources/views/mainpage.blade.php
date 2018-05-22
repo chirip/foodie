@@ -44,26 +44,26 @@
       <!--  <tr></tr>-->
       <!--</table>-->
 
-<div class="container card_result">
-    <div class="row card">
-        <a class ="none-decoration" href="#">
-            <div class="col-xs-7 col-md-9">
-                <div class ="card_shop_name">shopname</div>
-                <hr class="card_hr">
-                <div class="card_shop_detail">hyousai:zyuusyo address</div>
-            </div>
+<div class="container card_result ">
+<!--    <div class="row card">-->
+<!--        <a class ="none-decoration" href="#">-->
+<!--            <div class="col-xs-7 col-md-9">-->
+<!--                <div class ="card_shop_name">shopname</div>-->
+<!--                <hr class="card_hr">-->
+<!--                <div class="card_shop_detail">hyousai:zyuusyo address</div>-->
+<!--            </div>-->
             
-            <div class="col-xs-3 col-md-2 img_box">
-                <div class="testbox"></div>
+<!--            <div class="col-xs-3 col-md-2 img_box">-->
+<!--                <div class="testbox"></div>-->
                 <!--<img src="{{ asset('/image/test.jpg') }}" alt="test_phote">-->
-            </div>
+<!--            </div>-->
             
-            <div class="col-xs-2 col-md-1">
-                <img src="{{ asset('/image/pink.png') }}" alt="test_phote">
-            </div>
-        </a>
-    </div>
-</div>
+<!--            <div class="col-xs-2 col-md-1">-->
+<!--                <img src="{{ asset('/image/pink.png') }}" alt="test_phote">-->
+<!--            </div>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--</div>-->
 
 <!--</div>-->
 
@@ -206,7 +206,7 @@
                                     </div>
                                     
                                     <div class="col-xs-2 col-md-1">
-                                        <img src="{{ asset('/image/pink.png') }}" alt="test_phote">
+                                        <img src="{{ asset('/image/add_nonactive.png') }}" alt="test_phote" width="50px" height="50px">
                                     </div>
                                 </a>
                             </div>

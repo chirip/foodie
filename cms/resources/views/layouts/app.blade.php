@@ -47,7 +47,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="logo_mark" src="{{ asset('/image/logo.png') }}" alt="test_phote">
+                    <img class="logo_mark" src="{{ asset('/image/logo.png') }}" alt="test_phote" width="30px" height="30px">
                     {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -55,14 +55,12 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                      <ul class="nav navbar-nav">
-                        <li class="{{ (Request::is('/') ? 'active' : '') }}">
-                            <a href="{{ url('') }}"><i class="fa fa-home"></i> Search</a>
-                        </li>
-                        <li class="{{ (Request::is('favorites') ? 'active' : '') }}">
-                            <a href="{{ url('favorites') }}">Favorites</a>
-                        </li>
                         <li class="{{ (Request::is('mainpage') ? 'active' : '') }}">
                             <a href="{{ url('mainpage') }}">Mainpage</a>
+                        </li>
+
+                        <li class="{{ (Request::is('/') ? 'active' : '') }}">
+                            <a href="{{ url('') }}"><i class="fa fa-home"></i> Search</a>
                         </li>
                     </ul>
                     
@@ -77,20 +75,24 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ Auth::user()->name }} 
-                                    <img class="user_icon" src="{{ asset('/image/icon-face.png') }}" alt="test_phote">
+                                    <img class="user_icon" src="{{ asset('/image/icon-face.png') }}" alt="test_phote" width="25px" height="25px">
 
                                     <!--<span class="caret"></span> <!--▼マーク-->
 
                                 </a>
 
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu background-image-none">
+                                    
+                                    <li class="{{ (Request::is('favorites') ? 'active' : '') }}">
+                                        <a href="{{ url('favorites') }}">Favorites</a>
+                                    </li>
+                                    
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
-
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>

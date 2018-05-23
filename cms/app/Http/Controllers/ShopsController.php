@@ -140,7 +140,7 @@ class ShopsController extends Controller
     public function addShop(Request $request){
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'shop_name' => 'required|max:191',
+            'shop_name' => 'required|max:1024',
         ]);
     
         //バリデーション:エラー 
@@ -158,6 +158,7 @@ class ShopsController extends Controller
             $shops->place_id = $request->place_id;
             $shops->lat = $request->lat;
             $shops->lng = $request->lng;
+            $shops->photo = $request->photo;
             $shops->save();
             return redirect('/');
     }

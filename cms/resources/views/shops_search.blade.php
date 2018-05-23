@@ -94,7 +94,11 @@
             var place_id  = places[i].id  
             var lat       = places[i].geometry.location.lat()
             var lng       = places[i].geometry.location.lng()
-            var photo     = places[i].photos[0].getUrl({maxWidth: 300})
+            var photo     = typeof places[i].photos !== 'undefined' 
+       ? places[i].photos[0].getUrl({'maxWidth': 200, 'maxHeight': 200}): '' 
+       //alternative a "nophoto.jpg"
+       
+            // places[i].photos[0].getUrl({maxWidth: 300})
 
             $('.card_result').append(`
                 <div class="row card">
@@ -106,8 +110,7 @@
                         </div>
                         
                         <div class="col-xs-3 col-md-2 img_box">
-                            <div class="testbox"></div>
-                            <!--<img src="{{ asset('/image/test.jpg') }}" alt="test_phote">-->
+                            <img src="${photo}"　class="img-responsive"  alt="test_phote"　>
                         </div>
                         
                         <div class="col-xs-2 col-md-1">
@@ -118,7 +121,7 @@
                             <input type="hidden" name="place_id" id="place_id" value="${place_id}">
                             <input type="hidden" name="lat" id="lat" value="${lat}">
                             <input type="hidden" name="lng" id="lng" value="${lng}">
-                            {{--// <input type="hidden" name="photo" id="photo" value="${photo}">--}}
+                            <input type="hidden" name="photo" id="photo" value="${photo}">
                             <button class="add_favorites" type="submit">
                                 <img src="{{ asset('/image/add_nonactive.png') }}" alt="test_phote" width="50px" height="50px">
                             </button>

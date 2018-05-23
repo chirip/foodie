@@ -1,5 +1,7 @@
       #map {
         height: 100%;
+        /*width: 80%;*/
+        /*margin:0 10%;*/
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {

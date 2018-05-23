@@ -6,83 +6,89 @@ body{
 /*--------------------------------------------------------
 detail/全体
 ----------------------------------------------------------*/
-  #detail_wrapper{
-    width: 100%;
-    background-color: #EFEFEF;
-  }
+#detail_wrapper{
+  width: 100%;
+  background-color: #EFEFEF;
+}
   
-  #detail_content{
-    border:1px solid #999999;
-    box-shadow:0px 4px 8px -2px #d4d4d4;
-    background-color: #fff;
-  }
+#detail_content{
+  border:1px solid #999999;
+  box-shadow:0px 4px 8px -2px #d4d4d4;
+  background-color: #fff;
+}
   
-  #detail_map{
-    height: 500px;
-    margin-bottom: 30px;
-  }
-  
-  .photo{
+#detail_map{
+  height: 500px;
+  margin-bottom: 30px;
+}
+
+.photo{
   height: 150px;
   background-color: #cccccc;
   border:1px solid #999999;
-  }
-  
-  .under{
+}
+
+.under{
   border-bottom: 1px solid #707070;
-  }
-  
-  #shop_name{
+}
+
+#shop_name{
   margin-bottom: 20px;
-  }
-  
-  .margin-0{
-    margin: 0;
-  }
+}
+
+.margin-0{
+  margin: 0;
+}
+
+.head-object{
+  background-color: #961212;
+  width: 10px;
+  float: left;
+  height: 40px;
+}
 /*--------------------------------------------------------
 detail/table
 ----------------------------------------------------------*/
   
-  hr{
+hr{
   border-width: 2px 0 0 0; /* 太さ */
   border-color: 707070; /* 色 */
   margin: 10px 0px 40px 0;
-  }
-  
-  #detail_table{
+}
+#detail_table{
   border-spacing: 0;
   border-collapse: collapse;
-  }
-  table th,table td{
+}
+table th,table td{
   border-top: 1px solid #707070;
   border-left: 1px solid #707070;
-  }
-  table th{
+}
+table th{
   padding: 5px 10px;
   background: #F7D7D5;
   color: #707070;
   text-align: center;
   vertical-align: middle;
   font-weight: normal;
-  }
-  table td{
+}
+table td{
   padding: 2px 5px;
   background: #FCFCFC;
   color: #45823E;
   text-align: left;
-  }
-  table tr:nth-child(even) td{
+}
+table tr:nth-child(even) td{
   background: #EEEEEE;
-  }
-  table th:last-child,table td:last-child{
+}
+table th:last-child,table td:last-child{
   border-right: 1px solid #707070;
-  }
-  table tr:last-child th,table tr:last-child td{
+}
+table tr:last-child th,table tr:last-child td{
   border-bottom: 1px solid #707070;
-  }
-  table th:not(:first-child),table td:not(:first-child){
+}
+table th:not(:first-child),table td:not(:first-child){
   border-left:none;
-  }
+}
   
 /*--------------------------------------------------------
 bootstrap3 navbar
@@ -184,13 +190,11 @@ bootstrap3 navbar
     background-color: #fbecec;
   }
 }
-
 .navbar-default{
   border:none;
   box-shadow: none;
   margin-bottom: 0px;
 }
-
 
 .user_icon{
   width: 25px;
@@ -210,14 +214,9 @@ bootstrap3 navbar
 }
 
 
-
-
-
-
 /*--------------------------------------------------------
 card
 ----------------------------------------------------------*/
-
 .card{
   border-color: #000;
   background-color: #fff;
@@ -247,28 +246,32 @@ card
 }
 
 .card_shop_name{
-  font-size: 20px;
-  margin-left: 20px;
-  padding: 20px 0px 5px 0px ;
+    font-size: 1.5rem;
+    margin-left: 5%;
+    padding: 20px 0px 5px 0px;
 }
 
 .card_shop_detail{
-  margin-left: 20px;
-  padding: 5px 0px 20px 0px ;
+    margin-left: 5%;
+    padding: 2% 0px 5% 0px;
+    font-size: 0.3rem;
 
 }
 .card_hr{
   margin: 0px
+}
+.add_favorites{
+  border:none;
 }
 
 /*--------------------------------------------------------
 検索ボックス
 ----------------------------------------------------------*/
 .search_wrap{
-    position:relative;
-    background-color:#fff;
-    border-top: 3px solid #707070;
-    padding: 8px 0px;
+  position:relative;
+  background-color:#fff;
+  border-top: 3px solid #707070;
+  padding: 8px 0px;
 }
 
 dl{
@@ -276,44 +279,42 @@ dl{
 }
 
 dl.search{
-    position:relative;
-    background-color:#fff;
-    border-top: 3px solid #707070;
-    margin: 0% 10%;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-
+  position:relative;
+  background-color:#fff;
+  border-top: 3px solid #707070;
+  margin: 0% 10%;
+  border: 1px solid #aaa;
+  border-radius: 4px;
 }
 dl.search dt{
-    margin-right:70px;
-    padding:8px 0 8px 30px;
-
+  margin-right:70px;
+  padding:8px 0 8px 30px;
 }
 dl.search dt input{
-    width:100%;
-    height:24px;
-    line-height:24px;
-    background:none;
-    border:none;
+  width:100%;
+  height:24px;
+  line-height:24px;
+  background:none;
+  border:none;
 }
 dl.search dd{
-    position:absolute;
-    top:0;
-    right:0;
+  position:absolute;
+  top:0;
+  right:0;
 }
 dl.search dd button{
-    display:block;
-    padding:10px;
-    background:none;
-    border:none;
-    margin-right: 10px;
+  display:block;
+  padding:10px;
+  background:none;
+  border:none;
+  margin-right: 10px;
 }
 dl.search dd button span{
-    display:block;
-    width:23px;
-    height:23px;
-    background:url('../image/icon_search_50.png') no-repeat scroll 0 0;
-    background-size:contain
+  display:block;
+  width:23px;
+  height:23px;
+  background:url('../image/icon_search_50.png') no-repeat scroll 0 0;
+  background-size:contain
 }
 
 #pac-input{
@@ -324,5 +325,10 @@ dl.search dd button span{
   padding-left: 0;
 }
 
+#address{
+  font:none;
+  font-family: Roboto;
+  font-size: 15px;
+}
 
 

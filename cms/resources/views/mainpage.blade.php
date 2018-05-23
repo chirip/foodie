@@ -157,7 +157,7 @@ function initMap(){
                         </div>
                         
                         <div class="col-xs-2 col-md-1">
-                            <img src="{{ asset('/image/add_nonactive.png') }}" alt="test_phote" width="50px" height="50px">
+                            <img src="{{ asset('/image/add_nonactive.png') }}" class="img-responsive" alt="test_phote" width="50px" height="50px">
                         </div>
                     </a>
                 </div>

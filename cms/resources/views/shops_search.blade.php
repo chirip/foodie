@@ -19,22 +19,15 @@
     <div class="test">
     
     <div class="panel panel-default">
-      <div class="panel-heading"> 
-        店舗一覧
-      
-      </div>
+        <div class="head-object"></div>
+        <div class="panel-heading"> 
+            店舗一覧
+        </div>
         <div class="panel-body">
-          <table class="table table-striped task-table">
-            <!-- テーブルヘッダ -->
-            <!--<thead>-->
-            <!--  <th>店舗一覧</th>-->
-            <!--  <th>&nbsp;</th>-->
-            <!--</thead>  -->
-            
-            <tr></tr>
-            
-          </table>
-      </div>
+            <div class="container card_result">
+                
+            </div>
+        </div>
     </div>
 
     <script>
@@ -92,7 +85,7 @@
           console.log(places);
           
           // 表示中リスト　リセット
-          $("tr").remove();
+          $(".card").remove();
           
           // 取得リスト一覧表示
           for(let i of Object.keys(places)) {
@@ -103,13 +96,22 @@
             var lng       = places[i].geometry.location.lng()
             var photo     = places[i].photos[0].getUrl({maxWidth: 300})
 
-            $('tbody').append(`
-                <tr>
-                    <td>${name}</td>
-                    <td>${address}</td>
-  
-                    <td>
-                        <form action="{{ url('shops') }}" method="POST">
+            $('.card_result').append(`
+                <div class="row card">
+                    <a class ="none-decoration" href="#">
+                        <div class="col-xs-7 col-md-9">
+                            <div class ="card_shop_name">${name}</div>
+                            <hr class="card_hr">
+                            <div class="card_shop_detail">${address}</div>
+                        </div>
+                        
+                        <div class="col-xs-3 col-md-2 img_box">
+                            <div class="testbox"></div>
+                            <!--<img src="{{ asset('/image/test.jpg') }}" alt="test_phote">-->
+                        </div>
+                        
+                        <div class="col-xs-2 col-md-1">
+                             <form action="{{ url('shops') }}" method="POST">
                             {{ csrf_field() }}
                             <input type="hidden" name="shop_name" id="shop_name" value="${name}">
                             <input type="hidden" name="formatted_address" id="address" value="${address}">
@@ -117,25 +119,16 @@
                             <input type="hidden" name="lat" id="lat" value="${lat}">
                             <input type="hidden" name="lng" id="lng" value="${lng}">
                             {{--// <input type="hidden" name="photo" id="photo" value="${photo}">--}}
-
-                            
-
-                            <button type="submit" class="btn btn-plus">
-                                 <i class="glyphicon glyphicon-pencil"></i> save
+                            <button class="add_favorites" type="submit">
+                                <img src="{{ asset('/image/add_nonactive.png') }}" alt="test_phote" width="50px" height="50px">
                             </button>
                         </form>
-                    {{--//   <td>
-                    //         <form action="{{ url('detail/'.${place_id}) }}" method="get">
-                    //           {{ csrf_field() }}
-                    //             <button type="submit" class="btn btn-primary">
-                    //                 <i class="glyphicon glyphicon-pencil"></i> 詳細
-                    //             </button>
-                    //         </form>
-                    //     </td>
-                    // </td>
-                    --}}
-                    
-                </tr>`);
+                        </div>
+                    </a>
+                </div>
+            
+                       
+            `);
 
           }
 

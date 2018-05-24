@@ -103,29 +103,29 @@
             $('.card_result').append(`
                 <div class="row card">
                     <a class ="none-decoration" href="#">
-                        <div class="col-xs-7 col-md-9">
+                        <div class="col-xs-7 col-md-9 card-content">
                             <div class ="card_shop_name">${name}</div>
                             <hr class="card_hr">
                             <div class="card_shop_detail">${address}</div>
                         </div>
                         
-                        <div class="col-xs-3 col-md-2 img_box">
-                            <img src="${photo}"　class="img-responsive"  alt="test_phote"　>
+                        <div class="col-xs-3 col-md-2 card-img-box">
+                              <div class="card-img" style="background-image: url('${photo}')"></div>
                         </div>
                         
                         <div class="col-xs-2 col-md-1">
                              <form action="{{ url('shops') }}" method="POST">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="shop_name" id="shop_name" value="${name}">
-                            <input type="hidden" name="formatted_address" id="address" value="${address}">
-                            <input type="hidden" name="place_id" id="place_id" value="${place_id}">
-                            <input type="hidden" name="lat" id="lat" value="${lat}">
-                            <input type="hidden" name="lng" id="lng" value="${lng}">
-                            <input type="hidden" name="photo" id="photo" value="${photo}">
-                            <button class="add_favorites" type="submit">
-                                <img src="{{ asset('/image/add_nonactive.png') }}" alt="test_phote" width="50px" height="50px">
-                            </button>
-                        </form>
+                                {{ csrf_field() }}
+                                <input type="hidden" name="shop_name" id="shop_name" value="${name}">
+                                <input type="hidden" name="formatted_address" id="address" value="${address}">
+                                <input type="hidden" name="place_id" id="place_id" value="${place_id}">
+                                <input type="hidden" name="lat" id="lat" value="${lat}">
+                                <input type="hidden" name="lng" id="lng" value="${lng}">
+                                <input type="hidden" name="photo" id="photo" value="${photo}">
+                                <button class="add-btn-favorites" type="submit">
+                                    <img src="{{ asset('/image/add_nonactive.png') }}" calss="btn-img" alt="shop_phote" width="30px" height="30px">
+                                </button>
+                            </form>
                         </div>
                     </a>
                 </div>

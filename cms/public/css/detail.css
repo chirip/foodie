@@ -226,6 +226,11 @@ card
   box-shadow: 0px 4px 18px -5px rgba(122,122,122,1);  
 }
 
+.col-md-2{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .none-decoration{
   text-decoration	:none;
 }
@@ -234,8 +239,17 @@ card
 .none-decoration:hover { color: #000; }
 .none-decoration:active { color: #000; }
 
-.img_box{
-  /*overflow: auto;*/
+.card-img-box{
+    padding: 0px 3px;
+}
+
+.card-img {
+  display: inline-block;
+  width: 100%;
+  height: 100px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .testbox{
@@ -260,10 +274,28 @@ card
 .card_hr{
   margin: 0px
 }
-.add_favorites{
-  border:none;
+
+.add-btn-favorites{
+
 }
 
+.btn-img{
+
+}
+
+
+
+
+
+
+
+.card-content{
+  height: 100%
+}
+
+.card-add-btn-wrap{
+  height: 100%;
+}
 
 /*--------------------------------------------------------
 検索ボックス

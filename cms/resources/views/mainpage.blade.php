@@ -92,15 +92,19 @@ function initMap(){
      
     map.setOptions({styles: styleOptions});
     
+    //-------------maker click event
+
     function markerEvent(i) {
-marker[i].addListener('click', function() { // マーカーをクリックしたとき
-if (currentInfoWindow) {
-currentInfoWindow.close();
-}
-windows[i].open(map, marker[i]); // 吹き出しの表示
-currentInfoWindow = windows[i];
-});
-}
+        marker[i].addListener('click', function() { // マーカーをクリックしたとき
+            if (currentInfoWindow) {
+                currentInfoWindow.close();
+            }
+            windows[i].open(map, marker[i]); // 吹き出しの表示
+            currentInfoWindow = windows[i];
+            google.maps.event.addListener(map, "click", function() {windows[i].close();});
+
+        });
+    }
 
     
     //-------------地図の表示領域が変更されたらイベントを発生させる
@@ -147,8 +151,9 @@ currentInfoWindow = windows[i];
                 icon:resultFavorites[i].icon
             });
             
+
             windows[i] = new google.maps.InfoWindow({ // 吹き出しの追加
-                content: "test"
+                content: ""
                 });
                 markerEvent(i); // マーカーにクリックイベントを追加
         }

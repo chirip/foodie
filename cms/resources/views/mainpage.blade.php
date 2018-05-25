@@ -151,9 +151,8 @@ function initMap(){
                 icon:resultFavorites[i].icon
             });
             
-
             windows[i] = new google.maps.InfoWindow({ // 吹き出しの追加
-                content: ""
+                content: `<a href='${resultFavorites[i].place_id}' target='_top'>${resultFavorites[i].shop_name}</a>`
                 });
                 markerEvent(i); // マーカーにクリックイベントを追加
         }
@@ -169,7 +168,7 @@ function initMap(){
             var place_id  = resultFavorites[i].place_id
 
             $('.card_result').append(`
-                <div class="row card">
+                <div class="row card ${name}">
                     <a class ="none-decoration" href="#">
                         <div class="col-xs-7 col-md-9">
                             <div class ="card_shop_name">${name}</div>

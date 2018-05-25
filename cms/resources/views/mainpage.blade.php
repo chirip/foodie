@@ -31,8 +31,8 @@
     // 複数マーカー準備
     /**
      * favorites:red
-     * othersFavorites:yellow
-     * commonFavorites:lightblue
+     * othersFavorites:lightblue
+     * commonFavorites:yellow
     */
     
         
@@ -44,14 +44,14 @@
 
     for (var i = 0; i < othersFavorites.length; i++) {
       //markerの色を指定：yellow
-      othersFavorites[i].icon = '../image/yellow-dot.png';
+      othersFavorites[i].icon = '../image/lightblue.png';
       }
     console.log(othersFavorites);　//確認
      
      
     for (var i = 0; i < commonFavorites.length; i++) {
       //markerの色を指定：pink
-      commonFavorites[i].icon = '../image/lightblue.png';
+      commonFavorites[i].icon = '../image/yellow-dot.png';
       }
     console.log(commonFavorites);　//確認
     
@@ -152,7 +152,7 @@ function initMap(){
             });
             
             windows[i] = new google.maps.InfoWindow({ // 吹き出しの追加
-                content: `<a href='${resultFavorites[i].place_id}' target='_top'>${resultFavorites[i].shop_name}</a>`
+                content: `<a href='#${resultFavorites[i].id}' target='_top'>${resultFavorites[i].shop_name}</a>`
                 });
                 markerEvent(i); // マーカーにクリックイベントを追加
         }
@@ -166,9 +166,11 @@ function initMap(){
             var name      = resultFavorites[i].shop_name
             var address   = resultFavorites[i].formatted_address
             var place_id  = resultFavorites[i].place_id
+            var id  = resultFavorites[i].id
+
 
             $('.card_result').append(`
-                <div class="row card ${name}">
+                <div class="row card" id="${id}">
                     <a class ="none-decoration" href="#">
                         <div class="col-xs-7 col-md-9">
                             <div class ="card_shop_name">${name}</div>

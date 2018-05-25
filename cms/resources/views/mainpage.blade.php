@@ -32,13 +32,15 @@
     /**
      * favorites:red
      * othersFavorites:yellow
-     * commonFavorites:pink
+     * commonFavorites:lightblue
     */
     
+        
     var favorites = @json($favorites);　//自分がお気に入り登録済み json化
     var othersFavorites = @json($othersFavorites);　//他人の登録したお店 json化
     var commonFavorites = @json($commonFavorites);　//他人の登録したlat lng json化
-
+    var windows = [];
+    var currentInfoWindow = null;
 
     for (var i = 0; i < othersFavorites.length; i++) {
       //markerの色を指定：yellow
@@ -49,7 +51,7 @@
      
     for (var i = 0; i < commonFavorites.length; i++) {
       //markerの色を指定：pink
-      commonFavorites[i].icon = '../image/pink-dot.png';
+      commonFavorites[i].icon = '../image/lightblue.png';
       }
     console.log(commonFavorites);　//確認
     
@@ -89,6 +91,17 @@ function initMap(){
      }];
      
     map.setOptions({styles: styleOptions});
+    
+    function markerEvent(i) {
+marker[i].addListener('click', function() { // マーカーをクリックしたとき
+if (currentInfoWindow) {
+currentInfoWindow.close();
+}
+windows[i].open(map, marker[i]); // 吹き出しの表示
+currentInfoWindow = windows[i];
+});
+}
+
     
     //-------------地図の表示領域が変更されたらイベントを発生させる
     google.maps.event.addListener(map, 'idle', function() {
@@ -133,7 +146,15 @@ function initMap(){
                 map: map,
                 icon:resultFavorites[i].icon
             });
+            
+            windows[i] = new google.maps.InfoWindow({ // 吹き出しの追加
+                content: "test"
+                });
+                markerEvent(i); // マーカーにクリックイベントを追加
         }
+        
+
+
       
         // 取得リスト一覧表示
         for(let i = 0; i < resultFavorites.length; i++) {
@@ -181,7 +202,7 @@ function initMap(){
         },
         othersFavorites: {
             name: 'ミンナ',
-            icon: '../image/pink-dot-mini.png'
+            icon: '../image/lightblue-mini.png'
         },
         commonFavorites: {
             name: 'コモン',

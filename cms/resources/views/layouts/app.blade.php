@@ -32,7 +32,8 @@
 
 <body>
     
-    <div id="app">
+    <div class="container">
+        <div class="row">
         <nav class="navbar navbar-default navbar-static-top navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -104,6 +105,7 @@
                 </div>
             </div>
         </nav>
+        </div>
     </div>
     
     <!-- Scripts -->

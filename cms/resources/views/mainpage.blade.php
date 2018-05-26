@@ -166,7 +166,10 @@ function initMap(){
             var name      = resultFavorites[i].shop_name
             var address   = resultFavorites[i].formatted_address
             var place_id  = resultFavorites[i].place_id
-            var id  = resultFavorites[i].id
+            var id        = resultFavorites[i].id
+            var lat       = resultFavorites[i].lat
+            var lng       = resultFavorites[i].lng
+            var photo     = resultFavorites[i].photo
 
 
             $('.card_result').append(`
@@ -184,7 +187,18 @@ function initMap(){
                         </div>
                         
                         <div class="col-xs-2 col-md-1">
-                            <img src="{{ asset('/image/add_nonactive.png') }}" alt="test_phote" width="50px" height="50px">
+                             <form action="{{ url('shops') }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="shop_name" id="shop_name" value="${name}">
+                                <input type="hidden" name="formatted_address" id="address" value="${address}">
+                                <input type="hidden" name="place_id" id="place_id" value="${place_id}">
+                                <input type="hidden" name="lat" id="lat" value="${lat}">
+                                <input type="hidden" name="lng" id="lng" value="${lng}">
+                                <input type="hidden" name="photo" id="photo" value="${photo}">
+                                <button class="add-btn-favorites" type="submit">
+                                    <img src="{{ asset('/image/add_nonactive.png') }}" calss="btn-img" alt="shop_phote" width="30px" height="30px">
+                                </button>
+                            </form>                        
                         </div>
                     </a>
                 </div>

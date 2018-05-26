@@ -16,7 +16,7 @@
 // });
 
 use App\Shop;
-use Auth;
+// use Auth;
 use Illuminate\Http\Request;
 
 /*** 店舗検索　表示 */

@@ -371,4 +371,27 @@ dl.search dd button span{
   font-size: 15px;
 }
 
+/*--------------------------------------------------------
+topへ
+----------------------------------------------------------*/
 
+#page-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 50%;
+}
+#page-top a {
+  background: #fff;
+  text-decoration: none;
+  color: #961212;
+  width: 60px;
+  padding: 20px 0;
+  text-align: center;
+  display: block;
+  border-radius:  50px;
+}
+#page-top a:hover {
+  text-decoration: none;
+  background: #999;
+}

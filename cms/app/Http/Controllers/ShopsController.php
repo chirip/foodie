@@ -142,10 +142,11 @@ class ShopsController extends Controller
         $validator = Validator::make($request->all(), [
             'shop_name' => 'required|max:1024',
         ]);
-        if(Shop::where('place_id', '=', $request->place_id)->exists())
+        
+        if(Shop::where('user_id',Auth::user()->id) ->where('place_id', '=', $request->place_id)->exists())
         {
             return redirect('/');
-}
+        }
         //バリデーション:エラー 
         if ($validator->fails()) {
             return redirect('/')

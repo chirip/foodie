@@ -169,7 +169,12 @@ function initMap(){
             var id        = resultFavorites[i].id
             var lat       = resultFavorites[i].lat
             var lng       = resultFavorites[i].lng
-            var photo     = resultFavorites[i].photo
+            var photo; 
+                if(resultFavorites[i].photo ==  "NULL" ){
+                    photo = 'https://placehold.jp/a8a8a8/ffffff/150x150.png?text=no%20image%0A'
+                }else{
+                    photo = resultFavorites[i].photo
+                };
 
 
             $('.card_result').append(`
@@ -182,8 +187,7 @@ function initMap(){
                         </div>
                         
                         <div class="col-xs-3 col-md-2 img_box">
-                            <div class="testbox"></div>
-                            <!--<img src="{{ asset('/image/test.jpg') }}" alt="test_phote">-->
+                            <div class="card-img" style="background-image: url('${photo}')"></div>
                         </div>
                         
                         <div class="col-xs-2 col-md-1">

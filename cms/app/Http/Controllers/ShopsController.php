@@ -88,7 +88,7 @@ class ShopsController extends Controller
 
         return view('mainpage', 
             [
-                'shops'           => $shops,
+                'shops'           =>$shops,
                 'favorites'       =>$favorites,
                 'othersFavorites' =>$othersFavorites,
                 'user_id'         =>$user_id,
@@ -142,13 +142,17 @@ class ShopsController extends Controller
         $validator = Validator::make($request->all(), [
             'shop_name' => 'required|max:1024',
         ]);
-    
+        if(Shop::where('place_id', '=', $request->place_id)->exists())
+        {
+            return redirect('/');
+}
         //バリデーション:エラー 
         if ($validator->fails()) {
             return redirect('/')
                 ->withInput()
                 ->withErrors($validator);
         }
+
         //以下に登録処理を記述（Eloquentモデル）
         // Eloquent モデル
             $shops = new Shop;

@@ -34,11 +34,10 @@ Route::post('/shops','ShopsController@addShop');
 /*** 店舗詳細 */
 Route::get('/detail/{place_id}','ShopsController@detail');
 
-
 /*** 店舗を削除 */
 Route::post('/favorites/delete/{shop}','ShopsController@destroy');
 
-/*** ajax */
+/*** ajax  未使用*/
 Route::post('/mainpage/post','ShopsController@ajax');
 
 

@@ -14,11 +14,13 @@
 
     </div>
     <div class="row">
-        <div class="col-md-2 photo col-md-offset-2">photo_1</div>
-        <div class="col-md-2 photo">photo_2</div>
-        <div class="col-md-2 photo">photo_3</div>
-        <div class="col-md-2 photo">photo_4</div>
-
+        <div class="col-md-4  col-md-offset-4">
+            @if ($shop->photo =="NULL")
+                <div class="detail-img" style="background-image: url('https://placehold.jp/a8a8a8/ffffff/150x150.png?text=no%20image%0A')"></div>
+            @else
+                <div class="detail-img" style="background-image: url({{$shop->photo}})"></div>
+            @endif
+            </div>
     </div>
 
     <div class="row">

@@ -113,7 +113,7 @@
                               <div class="card-img" style="background-image: url('${photo}')"></div>
                         </div>
                         
-                        <div class="col-xs-2 col-md-1">
+                        <div class="col-xs-2 col-md-1 add-btn">
                              <form action="{{ url('shops') }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="shop_name" id="shop_name" value="${name}">
@@ -122,9 +122,9 @@
                                 <input type="hidden" name="lat" id="lat" value="${lat}">
                                 <input type="hidden" name="lng" id="lng" value="${lng}">
                                 <input type="hidden" name="photo" id="photo" value="${photo}">
-                                <button class="add-btn-favorites" type="submit">
+                                <div type="submit">
                                     <img src="{{ asset('/image/add_nonactive.png') }}" calss="btn-img" alt="shop_phote" width="30px" height="30px">
-                                </button>
+                                </div>
                             </form>
                         </div>
                     </a>

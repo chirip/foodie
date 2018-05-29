@@ -21,9 +21,17 @@
         <!--<h3></h3>  凡例タイトル-->
     </div>
     
-    <div>店舗一覧</div>
-
-    <div class="container card_result"></div>
+    <div class="panel panel-default">
+        <div class="head-object"></div>
+        <div class="panel-heading"> 
+            店舗一覧
+        </div>
+        <div class="panel-body">
+            <div class="container card_result">
+                
+            </div>
+        </div>
+    </div>
     
 <script>
 //------------- json受け取り　加工---------------------------------------------------------------
@@ -199,9 +207,9 @@ function initMap(){
                                 <input type="hidden" name="lat" id="lat" value="${lat}">
                                 <input type="hidden" name="lng" id="lng" value="${lng}">
                                 <input type="hidden" name="photo" id="photo" value="${photo}">
-                                <div type="submit">
+                                <button type="submit">
                                     <img src="{{ asset('/image/add_nonactive.png') }}" calss="btn-img" alt="shop_phote" width="30px" height="30px">
-                                </div>
+                                </button>
                             </form>                        
                         </div>
                     </a>

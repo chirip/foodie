@@ -1,20 +1,102 @@
+/*nav-bar*/
+.navbar-default .navbar-brand{
+  padding-left: 40px;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+  padding: 0 40px;
+}
+.navbar-default .navbar-nav > li > a{
+  margin-left: 0px;
+  text-align: center;
+
+}
+
+
+/*body*/
 .container{
     width: 100%;
     height: 100%;
-    background-image:url('../image/bowl-chairs-cooking-262918.jpg');
+    font-family: "robot";
+    background-image:url('../image/stil-336188-unsplash.jpg');
+  
+    /* 画像を常に天地左右の中央に配置 */
+    background-position: center center;
+     
+    /* 画像をタイル状に繰り返し表示しない */
+    background-repeat: no-repeat;
+     
+    /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+    background-attachment: fixed;
+     
+    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+    background-size: cover;
+     
+    /* 背景画像が読み込まれる前に表示される背景のカラー */
+    background-color: #464646;
+      
+    position: relative;
+    z-index: 0;
+    overflow: hidden;/*ブラー効果でボヤけた部分を非表示*/
+}
 
-  /* 画像を常に天地左右の中央に配置 */
-  background-position: center center;
-   
-  /* 画像をタイル状に繰り返し表示しない */
-  background-repeat: no-repeat;
-   
-  /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
-  background-attachment: fixed;
-   
-  /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
-  background-size: cover;
-   
-  /* 背景画像が読み込まれる前に表示される背景のカラー */
-  background-color: #464646;
+
+/*:beforeにぼかし効果を設定する*/
+.container::before{
+    content: '';
+    background: inherit;/*.bgImageで設定した背景画像を継承する*/
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+    position: absolute;
+    /*ブラー効果で画像の端がボヤけた分だけ位置を調整*/
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;/*重なり順序を一番下にしておく*/
+    display: block;
+}
+
+.control-text{
+    color: #fff;
+    font-family: "robot";
+    font-weight: normal;
+    text-align: none;
+}
+
+
+.login{
+    text-align: center;
+}
+
+.checkbox{
+    text-align: center;
+    color: #fff;
+    font-family: "robot";
+    font-weight: normal;
+    padding-right: 10px;
+}
+.btn{
+    color: #961212;
+    background-color: #fff;
+    border:none;
+    padding: 8px 40px;
+}
+.btn-link{
+    background-color:none;
+    color: #fff;
+    padding-left: 10px;
+}
+
+.innner-blur{
+    background-color: #0808085e;
+    padding: 35px;
+}
+
+.btn-link:focus, .btn-link:hover{
+    color: #fff;
+    text-decoration: underline;
+    background-color: transparent;
 }

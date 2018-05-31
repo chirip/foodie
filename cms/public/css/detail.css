@@ -420,3 +420,14 @@ topへ
   text-decoration: none;
   background: #999;
 }
+
+/*favorites page*/
+
+.favorite-card{
+  margin-top: 100px;
+  text-align: center;
+}
+.hight{
+  padding: 2% 0px 5% 0px;
+
+}

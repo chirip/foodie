@@ -34,12 +34,6 @@
                                         </button>
                                     </form>
                                 </td>
-                                
-                                <!--<td>-->
-                                <!--<a href ="{{ url('detail/'.$shop->place_id) }}" >-->
-                                <!--<div>test</div>-->
-                                <!--</a>-->
-                                <!--</td>-->
 
                                 <!-- 詳細ボタン -->
                                 <td>
@@ -64,11 +58,15 @@
             </div>
          </div>
      @else
-         <div>
-             <p>お気に入り店舗が登録されていません。</p>
-             <a href="{{'/'}}">店舗を検索</a>
-         </div>
-     
+     <div class="container">
+        <div class="row card favorite-card">
+            <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 ">
+                <div class ="card_shop_name">お気に入り店舗が登録されていません</div>
+                <hr class="card_hr">
+                <div class="hight"><a href="{{'/'}}">店舗を検索</a></div>
+            </div>
+        </div>
+</div>
      @endif
  @endsection
  

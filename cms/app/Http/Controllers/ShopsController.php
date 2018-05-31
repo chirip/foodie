@@ -102,37 +102,37 @@ class ShopsController extends Controller
 //-----------メインページajax----------------------------------------
     //使ってない
 
-    public function ajax(Request $request){
+    // public function ajax(Request $request){
         
-        $points = Shop::get(['lat','lng']);
-        $neLat = $request->neLat;
-        $neLng = $request->neLng;
-        $swLat = $request->swLat;
-        $swLng = $request->swLng;
+    //     $points = Shop::get(['lat','lng']);
+    //     $neLat = $request->neLat;
+    //     $neLng = $request->neLng;
+    //     $swLat = $request->swLat;
+    //     $swLng = $request->swLng;
         
-        $result = array();
-        $result['points']  = array();
+    //     $result = array();
+    //     $result['points']  = array();
 
-        foreach ($points as &$point) {
-            if (
-                $point->lat < $neLat &&
-                $point->lat > $swLat &&
-                $point->lng < $neLng &&
-                $point->lng > $swLng){
-                $result->points[] = $point;
-            }
-        }
+    //     foreach ($points as &$point) {
+    //         if (
+    //             $point->lat < $neLat &&
+    //             $point->lat > $swLat &&
+    //             $point->lng < $neLng &&
+    //             $point->lng > $swLng){
+    //             $result->points[] = $point;
+    //         }
+    //     }
         
-        return response()->json(
-            [
-                // 'result' => $result
-                'neLat' => $request->neLat,
-                'neLng' => $request->neLng,
-                'swLat' => $request->swLat,
-                'swLng' => $request->swLng
-            ]
-        );
-    }
+    //     return response()->json(
+    //         [
+    //             // 'result' => $result
+    //             'neLat' => $request->neLat,
+    //             'neLng' => $request->neLng,
+    //             'swLat' => $request->swLat,
+    //             'swLng' => $request->swLng
+    //         ]
+    //     );
+    // }
     
     
 //-----------検索結果をお気に入りに追加----------------------------------------

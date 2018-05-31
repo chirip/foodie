@@ -100,3 +100,10 @@
     text-decoration: underline;
     background-color: transparent;
 }
+
+/*register*/
+.register-wrap
+{
+    padding: 100px 20px !important;
+
+}

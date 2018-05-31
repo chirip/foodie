@@ -16,7 +16,6 @@
 // });
 
 use App\Shop;
-// use Auth;
 use Illuminate\Http\Request;
 
 /*** 店舗検索　表示 */
@@ -45,5 +44,5 @@ Route::post('/mainpage/post','ShopsController@ajax');
 Auth::routes();
 Route::get('/home', 'ShopsController@index')->name('home');
 
-Route::get('/layouts/app', 'ShopsController@app');
+// Route::get('/layouts/app', 'ShopsController@app');
 
